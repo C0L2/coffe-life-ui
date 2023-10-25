@@ -64,6 +64,8 @@ body {
   justify-content: center;
   align-items: center;
   gap: 10px;
+  outline: none;
+  border: none;
   padding-top: 40px;
 }
 
@@ -124,7 +126,6 @@ body {
   left: 0;
   right: 0;
   text-align: center;
-  /* Acest lucru aliniază paragraful în centru */
 }
 
 .menu-txt {
@@ -137,7 +138,6 @@ body {
 }
 
 .meet-questions-container {
-  /* padding-top: 10px; */
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -150,6 +150,20 @@ body {
   width: 98%;
   border-radius: 20px;
   background: #4DDEB0;
+}
+
+
+.quiz {
+  color: #000;
+  /* margin-top: 10px; */
+  min-height: 150px;
+  width: 98%;
+  border-radius: 20px;
+  background: #FFF;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
 }
 
 .meet-question-card .q {
@@ -252,16 +266,13 @@ body {
 .number-card {
   display: grid;
   grid-template-columns: 1fr auto;
-  /* O coloană pentru text și o coloană pentru SVG */
   align-items: center;
-  /* Aliniere verticală în centru */
   padding: 10px;
 }
 
 .number-card-ui {
   display: flex;
   justify-content: space-between;
-  /* Aliniere orizontală la distanță maximă */
   align-items: center;
 }
 
@@ -341,7 +352,6 @@ body {
 
 }
 
-/* numbers */
 .numer-title {
   font-weight: bold;
   font-size: 18px;
