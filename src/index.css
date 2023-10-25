@@ -1,0 +1,321 @@
+:root {
+  font-family: 'Montserrat Alternates', sans-serif;
+  font-family: 'Raleway', sans-serif;
+}
+
+body {
+  background: #2F2F2F;
+}
+
+::placeholder {
+  text-align: center;
+}
+
+.logo-container {
+  padding-top: 50px;
+  display: flex;
+  justify-content: center;
+}
+
+.hello-txt-container {
+  display: flex;
+  justify-content: center;
+}
+
+.hello-txt {
+  color: #FFF;
+  text-align: center;
+  font-family: Montserrat Alternates;
+  font-size: 36px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+}
+
+.reg-input {
+  border: 0px solid;
+  width: 280px;
+  height: 50px;
+  border-radius: 30px;
+  background: #FFF;
+  margin-top: 10px;
+  text-align: center;
+}
+
+.center-div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 40px;
+}
+
+
+
+.join-bnt-container {
+  display: flex;
+  padding: 10px 35px;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  padding-top: 40px;
+}
+
+.join-btn {
+  border-radius: 30px;
+  background: #F4F389;
+  width: 111px;
+  height: 40px;
+
+
+  color: #2F2F2F;
+  text-align: center;
+  font-family: Montserrat;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+}
+
+.reg-input:focus {
+  outline: none;
+}
+
+.hints {
+  color: #000;
+  text-align: center;
+  font-family: Montserrat;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+}
+
+.welcome-txt-container {
+  padding-top: 125px;
+  color: #FFF;
+  text-align: center;
+  font-size: 36px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+}
+
+.coffe-life-txt {
+  color: #FFF;
+  display: flex;
+  justify-content: center;
+  padding-top: 200px;
+}
+
+.paragraf-bottom {
+  color: #FFF;
+  position: fixed;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 12px;
+  bottom: 10px;
+  left: 0;
+  right: 0;
+  text-align: center;
+  /* Acest lucru aliniază paragraful în centru */
+}
+
+.menu-txt {
+  color: #FFF;
+  font-size: 20px;
+  font-weight: 600;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.q-header {
+  color: #FFF;
+  font-size: 20px;
+  font-weight: 600;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 40px;
+}
+
+.left-element {
+  width: 30px;
+  height: 30px;
+  padding-top: 5px;
+}
+
+.right-element {
+  margin-right: 20px;
+}
+
+.menu-txt MenuCard {
+  margin-top: 10px;
+}
+
+.menu-card {
+  width: 95%;
+  height: 150px;
+  border-radius: 20px;
+}
+
+.number-card {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  /* O coloană pentru text și o coloană pentru SVG */
+  align-items: center;
+  /* Aliniere verticală în centru */
+  padding: 10px;
+}
+
+.number-card-ui {
+  display: flex;
+  justify-content: space-between;
+  /* Aliniere orizontală la distanță maximă */
+  align-items: center;
+}
+
+.questions {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 65px;
+}
+
+.question-card {
+  position: relative;
+  width: 95%;
+  min-height: 100px;
+  border-radius: 20px;
+  background-color: #F4F389;
+}
+
+.get-number-card {
+  padding-top: 155px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.question-numbers {
+  float: right;
+  padding-right: 20px;
+  padding-top: 20px;
+}
+
+.question-card textarea:focus {
+  outline: none
+}
+
+.title-with-icon {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.menu-card .title {
+  margin-top: 10px;
+  margin-left: 20px;
+  color: #000;
+}
+
+.menu-card .ru {
+  font-weight: 500;
+  font-size: 12px;
+  margin-top: 50px;
+  margin-left: 20px;
+  color: #000;
+  font-style: normal;
+
+}
+
+.menu-card .ro {
+  font-style: normal;
+  font-weight: 500;
+  font-size: 12px;
+  margin-left: 20px;
+  color: #000;
+}
+
+.access-card {
+  margin-right: 20px;
+  margin-top: 20px;
+}
+
+.question {
+  padding-left: 20px;
+  padding-bottom: 20px;
+  font-style: normal;
+  line-height: normal;
+  font-size: 16px;
+
+}
+
+/* numbers */
+.numer-title {
+  font-weight: bold;
+  font-size: 18px;
+  padding-left: 20px;
+  padding-top: 15px;
+  color: #FFF;
+}
+
+.numar-title-ru {
+  color: #FFF;
+  font-weight: 500;
+  font-size: 12px;
+  margin-top: 50px;
+  margin-left: 20px;
+  font-style: normal;
+}
+
+.numar-title-ro {
+  color: #FFF;
+  font-weight: 500;
+  font-size: 12px;
+  margin-left: 20px;
+  font-style: normal;
+}
+
+.right-square {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.menu-card-2 {
+  margin-top: 150px;
+  display: flex;
+  background: #DC7755;
+  margin-bottom: 10px;
+  width: 100%;
+  border-radius: 20px;
+  min-height: 150px;
+}
+
+.title-with-icon-2 {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  padding: 10px;
+}
+
+.overlay-number {
+  position: absolute;
+  top: 48%;
+  left: 44%;
+  transform: translateY(-50%);
+  font-size: 36px;
+  color: black;
+  font-weight: bold;
+}
