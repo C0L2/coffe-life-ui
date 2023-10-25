@@ -1,7 +1,7 @@
 import { useNavigate } from "react-router-dom";
-import NumberCard from "../components/NumberCard";
+import QuestionsCard from "../components/QuestionsCard";
 
-const MyNumber = () => {
+const Location = () => {
   const navigate = useNavigate();
   return (
     <>
@@ -20,7 +20,7 @@ const MyNumber = () => {
             />
           </svg>
         </div>
-        <p style={{ fontSize: "20px" }}>my number</p>
+        <p style={{ fontSize: "20px" }}>location</p>
         <div className="right-element" onClick={() => navigate("/menu")}>
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -40,21 +40,16 @@ const MyNumber = () => {
           </svg>
         </div>
       </div>
+      <div className="map-container">
+        <div className="map">Here will be displayed a map</div>
+      </div>
 
-      <NumberCard />
-
-      <div className="join-bnt-container" style={{ paddingTop: "20px" }}>
-        <button
-          className="join-btn"
-          style={{ height: "60px", width: "209px" }}
-          onClick={() => navigate("/location")}
-        >
-          MEET A FRIEND
-        </button>
+      <div>
+        <QuestionsCard />
       </div>
       <p className="paragraf-bottom">Coffe & Life</p>
     </>
   );
 };
 
-export default MyNumber;
+export default Location;

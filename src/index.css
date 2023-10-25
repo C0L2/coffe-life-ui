@@ -136,6 +136,89 @@ body {
   align-items: center;
 }
 
+.meet-questions-container {
+  /* padding-top: 10px; */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: #FFF;
+}
+
+.meet-question-card {
+  margin-top: 10px;
+  height: 45px;
+  width: 98%;
+  border-radius: 20px;
+  background: #4DDEB0;
+}
+
+.meet-question-card .q {
+  margin-top: 15px;
+  margin-left: 20px;
+}
+
+.meet-container {
+  padding-top: 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: #FFF;
+}
+
+.meet-card {
+  min-height: 150px;
+  width: 98%;
+  border-radius: 20px;
+  background: #DC7755;
+}
+
+.meet-card .title {
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  margin-top: 10px;
+  margin-left: 20px;
+}
+
+.see-more {
+  margin-top: 25px;
+  margin-left: 20px;
+  font-weight: bold;
+  text-decoration: underline;
+  text-decoration-color: #F4F389;
+}
+
+.meet-card .ru-ro-txt {
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  margin-top: 20px;
+  margin-left: 20px;
+}
+
+.meet-card .ro-txt {
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  margin-left: 20px;
+}
+
+.map-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: #FFF;
+}
+
+.map-container .map {
+  background-color: #F4F389;
+  height: 300px;
+  width: 98%;
+}
+
 .q-header {
   color: #FFF;
   font-size: 20px;

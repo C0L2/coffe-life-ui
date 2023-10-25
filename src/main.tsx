@@ -9,6 +9,7 @@ import AskQuestion from "./pages/AskQuestion.tsx";
 import MeetFriends from "./pages/MeetFriends.tsx";
 import TakeQuiz from "./pages/TakeQuiz.tsx";
 import MyNumber from "./pages/MyNumber.tsx";
+import Location from "./pages/Location.tsx";
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
@@ -23,6 +24,7 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
           <Route path="meet-a-friend" element={<MeetFriends />} />
           <Route path="take-a-quiz" element={<TakeQuiz />} />
           <Route path="my-number" element={<MyNumber />} />
+          <Route path="location" element={<Location />} />
         </Route>
       </Routes>
     </BrowserRouter>
