@@ -43,7 +43,7 @@ const MeetFriends = () => {
 
       <div className="get-number-card">
         <MenuCard
-          title="Get yout number"
+          title="Get your number"
           title_ru="Получить свой номер"
           title_ro="Ia-ți numărul"
           link="my-number"

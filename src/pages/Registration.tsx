@@ -115,7 +115,7 @@ function Registration() {
             )}
           </div>
           <div className="join-bnt-container">
-            <button className="join-btn" type="submit">
+            <button className="join-btn" type="submit" style={{}}>
               JOIN
             </button>
           </div>

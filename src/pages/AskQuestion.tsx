@@ -40,10 +40,12 @@ const AskQuestion = () => {
           </svg>
         </div>
       </div>
-
       <AddQuestion />
-      {/*  <p style={{ textAlign: "center", color: "#FFF" }}>No questions</p> */}
-      <p className="paragraf-bottom">Coffe & Life</p>
+      <div className="menu-text">
+        <p className="paragraf-bottom" style={{ fontSize: "12px" }}>
+          Coffe & Life
+        </p>
+      </div>
     </>
   );
 };

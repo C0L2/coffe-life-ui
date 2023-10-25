@@ -13,9 +13,10 @@ const Welcome = () => {
         <LogoComponent />
       </div>
       <div className="welcome-txt-container">
-        Welcome to coffee & life family
+        Welcome to <br /> coffee & life
+        <br /> family
       </div>
-      <div className="join-bnt-container">
+      <div className="next-button-container">
         <button className="join-btn" onClick={handleClick}>
           NEXT
         </button>

@@ -3,6 +3,10 @@
   font-family: 'Raleway', sans-serif;
 }
 
+input[type='text'] {
+  font-size: 16px;
+}
+
 body {
   background: #2F2F2F;
 }
@@ -38,8 +42,12 @@ body {
   height: 50px;
   border-radius: 30px;
   background: #FFF;
-  margin-top: 10px;
+  margin-bottom: 10px;
   text-align: center;
+}
+
+.reg-input::-webkit-input-placeholder {
+  font-size: 16px;
 }
 
 .center-div {
@@ -67,13 +75,24 @@ body {
   padding-top: 40px;
 }
 
+.next-button-container {
+  display: flex;
+  padding: 10px 35px;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  outline: none;
+  border: none;
+  padding-top: 20px;
+}
+
 .join-btn {
+  outline: none;
+  border: none;
   border-radius: 30px;
   background: #F4F389;
   width: 111px;
   height: 40px;
-
-
   color: #2F2F2F;
   text-align: center;
   font-family: Montserrat;
@@ -98,9 +117,10 @@ body {
 }
 
 .welcome-txt-container {
-  padding-top: 125px;
+  padding-top: 105px;
   color: #FFF;
   text-align: center;
+  font-family: Montserrat Alternates;
   font-size: 36px;
   font-style: normal;
   font-weight: 700;
@@ -126,6 +146,18 @@ body {
   text-align: center;
 }
 
+.paragraf-bottom-special {
+  color: #FFF;
+  position: fixed;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 12px;
+  bottom: 1px;
+  left: 0;
+  right: 0;
+  text-align: center;
+}
+
 .menu-txt {
   color: #FFF;
   font-size: 20px;
@@ -133,6 +165,15 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+
+.menu-txt p {
+  color: #FFF;
+  font-family: Montserrat;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 100.9%;
 }
 
 .meet-questions-container {
@@ -290,6 +331,8 @@ body {
 }
 
 .get-number-card {
+  /* color: #FFF; */
+  width: 98%;
   padding-top: 155px;
   display: flex;
   flex-direction: column;
@@ -316,24 +359,33 @@ body {
   margin-top: 10px;
   margin-left: 20px;
   color: #000;
+  text-align: center;
+  font-family: Montserrat;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
 }
 
 .menu-card .ru {
-  font-weight: 500;
-  font-size: 12px;
   margin-top: 50px;
   margin-left: 20px;
+
   color: #000;
+  font-size: 12px;
   font-style: normal;
+  font-weight: 500;
+  line-height: normal;
 
 }
 
 .menu-card .ro {
-  font-style: normal;
-  font-weight: 500;
-  font-size: 12px;
   margin-left: 20px;
   color: #000;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
 }
 
 .access-card {

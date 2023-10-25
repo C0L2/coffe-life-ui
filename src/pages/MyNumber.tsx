@@ -6,7 +6,10 @@ const MyNumber = () => {
   return (
     <>
       <div className="q-header">
-        <div className="left-element" onClick={() => navigate("/my-number")}>
+        <div
+          className="left-element"
+          onClick={() => navigate("/meet-a-friend")}
+        >
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="30"

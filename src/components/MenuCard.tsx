@@ -14,7 +14,9 @@ const MenuCard: React.FC<MenuCardProps> = (props) => {
       style={{ background: `${props.color}`, marginBottom: "10px" }}
     >
       <div className="title-with-icon">
-        <div className="title">{props.title}</div>
+        <div className="title" style={{ fontSize: "16px" }}>
+          {props.title}
+        </div>
         <div className="access-card">
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -31,8 +33,12 @@ const MenuCard: React.FC<MenuCardProps> = (props) => {
           </svg>
         </div>
       </div>
-      <div className="ru">{props.title_ru}</div>
-      <div className="ro">{props.title_ro}</div>
+      <div className="ru" style={{ fontSize: "12px" }}>
+        {props.title_ru}
+      </div>
+      <div className="ro" style={{ fontSize: "12px" }}>
+        {props.title_ro}
+      </div>
     </div>
   );
 };
