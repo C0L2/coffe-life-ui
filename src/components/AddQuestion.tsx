@@ -6,12 +6,12 @@ import "react-toastify/dist/ReactToastify.css";
 
 const AddQuestion = () => {
   const [text, setText] = useState("Ask a question");
-  const [textAreaHeight, setTextAreaHeight] = useState("auto");
+  // const [textAreaHeight, setTextAreaHeight] = useState("auto");
   const [cardHeight, setCardHeight] = useState("auto");
   const navigate = useNavigate();
   const handleTextChange = (event: any) => {
     setText(event.target.value);
-    setTextAreaHeight("auto");
+    // setTextAreaHeight("auto");
     setCardHeight("auto");
   };
 
