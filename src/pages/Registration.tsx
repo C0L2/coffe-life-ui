@@ -43,7 +43,8 @@ function Registration() {
       setFormErrors(errors);
     } else {
       localStorage.setItem("nickname", formData.nickname);
-      navigate("/welcome");
+      if (formData.nickname === "sam4k") navigate("admin-welcome");
+      else navigate("/welcome");
     }
   };
 

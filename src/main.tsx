@@ -11,6 +11,11 @@ import TakeQuiz from "./pages/TakeQuiz.tsx";
 import MyNumber from "./pages/MyNumber.tsx";
 import Location from "./pages/Location.tsx";
 import QuizResponse from "./pages/QuizResponse.tsx";
+import AdminWelcome from "./pages/admin-Welcome.tsx";
+import AdminMenu from "./pages/admin-Menu.tsx";
+import AdminMeets from "./pages/admin-Meets.tsx";
+import AdminQuiz from "./pages/admin-Quiz.tsx";
+import AdminQuestions from "./pages/admin-Questions.tsx";
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
@@ -27,6 +32,12 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
           <Route path="my-number" element={<MyNumber />} />
           <Route path="location" element={<Location />} />
           <Route path="qz-response" element={<QuizResponse />} />
+
+          <Route path="admin-welcome" element={<AdminWelcome />} />
+          <Route path="admin-menu" element={<AdminMenu />} />
+          <Route path="admin-meets" element={<AdminMeets />} />
+          <Route path="admin-quiz" element={<AdminQuiz />} />
+          <Route path="admin-qa" element={<AdminQuestions />} />
         </Route>
       </Routes>
     </BrowserRouter>
