@@ -45,6 +45,12 @@ const MyNumber = () => {
       </div>
 
       <NumberCard />
+
+      <div className="join-bnt-container" style={{ paddingTop: "20px" }}>
+        <button className="join-btn" style={{ height: "60px", width: "209px" }}>
+          MEET A FRIEND
+        </button>
+      </div>
       <p className="paragraf-bottom">Coffe & Life</p>
     </>
   );
