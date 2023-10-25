@@ -439,3 +439,15 @@ body {
   font-weight: 700;
   line-height: normal;
 }
+
+.see-q-card {
+  color: #000;
+  min-height: 150px;
+  width: 98%;
+  border-radius: 20px;
+  background: #FFF;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+}
