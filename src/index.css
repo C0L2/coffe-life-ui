@@ -451,3 +451,10 @@ body {
   font-weight: 500;
   line-height: normal;
 }
+
+.quiz-results {
+  color: #FFF;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
