@@ -3,7 +3,10 @@ const UserInfo: React.FC<UserInfo> = (props) => {
   return (
     <>
       <div className="welcome-admin">
-        <div className="see-q-card" style={{ height: "40px" }}>
+        <div
+          className="see-q-card"
+          style={{ height: "40px", marginBottom: "5px" }}
+        >
           <div className="title-with-icon">
             <div
               style={{

@@ -1,8 +1,18 @@
 import { useNavigate } from "react-router-dom";
 import UserInfo from "../components/UserInfo";
+import { useState, useEffect } from "react";
+import { getAllUsers } from "../api";
 
 const AdminMeets = () => {
   const navigate = useNavigate();
+  const [usersList, setUsersList] = useState<any>([]);
+
+  useEffect(() => {
+    getAllUsers().then((res) => {
+      setUsersList(res.data);
+      console.log(usersList);
+    });
+  }, []);
   return (
     <>
       <div className="q-header">
@@ -61,7 +71,16 @@ const AdminMeets = () => {
         </div>
       </div>
       <hr />
-      <UserInfo firstName="Samuel" lastName="Vacaras" assignedNumber={5} />
+
+      {usersList.map((user: any) => (
+        <UserInfo
+          key={user.id}
+          id={user.id}
+          firstName={user.firstName}
+          lastName={user.lastName}
+          assignedNumber={user.assignedNumber}
+        />
+      ))}
       <p className="paragraf-bottom">Coffee & Life</p>
     </>
   );

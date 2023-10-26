@@ -8,6 +8,10 @@ export const regNewUser = (firstName: string, lastName: string, nickname: string
     })
 }
 
+export const getAllUsers = () => {
+    return axios.get(URL + "users/all-users")
+}
+
 export const askQuestions = (question: string) => {
     return axios.post(URL + 'questions/create-question', {
         question,
