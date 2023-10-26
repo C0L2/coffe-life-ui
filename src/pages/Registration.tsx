@@ -1,13 +1,8 @@
 import { useState, ChangeEvent, FormEvent } from "react";
 import LogoComponent from "../components/LogoComponent";
 import { useNavigate } from "react-router-dom";
-
-interface FormData {
-  name: string;
-  surname: string;
-  nickname: string;
-  mobileNumber: string;
-}
+import { FormData } from "../interfaces/FormData";
+import { regNewUser } from "../api";
 
 function Registration() {
   const initialFormData: FormData = {
@@ -37,14 +32,20 @@ function Registration() {
     if (formData.surname.trim() === "") {
       errors.surname = "Prenumele este obligatoriu";
     }
-    // Adăugați alte reguli de validare aici
 
     if (Object.keys(errors).length > 0) {
       setFormErrors(errors);
     } else {
-      localStorage.setItem("nickname", formData.nickname);
-      if (formData.nickname === "sam4k") navigate("admin-welcome");
-      else navigate("/welcome");
+      regNewUser(
+        formData.name,
+        formData.surname,
+        formData.nickname,
+        formData.mobileNumber
+      ).then(() => {
+        localStorage.setItem("nickname", formData.nickname);
+        if (formData.nickname === "admin-sigma") navigate("admin-welcome");
+        else navigate("/welcome");
+      });
     }
   };
 
@@ -105,7 +106,6 @@ function Registration() {
               className="reg-input"
               type="text"
               name="mobileNumber"
-              required
               placeholder="Mobile Number"
               value={formData.mobileNumber}
               onChange={handleInputChange}
