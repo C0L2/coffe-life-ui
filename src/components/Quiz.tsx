@@ -1,10 +1,37 @@
 import { useNavigate } from "react-router-dom";
+import { voteSurvey } from "../api";
+import { useState, useEffect } from "react";
 
 const Quiz = () => {
   const navigate = useNavigate();
+  const [voted, setVoted] = useState(!!localStorage.getItem("voted"));
 
-  function handleClick() {
-    navigate("/qz-response");
+  useEffect(() => {
+    if (localStorage.getItem("voted")) {
+      setVoted(true);
+    }
+  }, []);
+
+  function voteYes(event: any) {
+    event.preventDefault();
+    const is_pro: boolean = true;
+    voteSurvey(is_pro, 1).then((res) => {
+      if (res.status === 201) {
+        localStorage.setItem("voted", "yes");
+        navigate("/qz-response");
+      }
+    });
+  }
+
+  function voteNo(event: any) {
+    event.preventDefault();
+    const is_pro: boolean = false;
+    voteSurvey(is_pro, 1).then((res) => {
+      if (res.status === 201) {
+        localStorage.setItem("voted", "yes");
+        navigate("/qz-response");
+      }
+    });
   }
   return (
     <div className="map-container" style={{ marginTop: "60px" }}>
@@ -30,10 +57,18 @@ const Quiz = () => {
         </p>
 
         <div className="join-bnt-container" style={{ paddingTop: "5px" }}>
-          <button className="join-btn" onClick={handleClick}>
+          <button
+            className={`join-btn ${voted ? "disabled" : ""}`}
+            onClick={voteYes}
+            disabled={voted}
+          >
             Да
           </button>
-          <button className="join-btn" onClick={handleClick}>
+          <button
+            className={`join-btn ${voted ? "disabled" : ""}`}
+            onClick={voteNo}
+            disabled={voted}
+          >
             Нет
           </button>
         </div>

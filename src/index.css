@@ -102,6 +102,15 @@ body {
   line-height: normal;
 }
 
+.join-btn.disabled {
+  background-color: #ccc;
+  /* O culoare de fundal gri pentru butoanele dezactivate */
+  color: #666;
+  /* O culoare mai întunecată pentru text */
+  pointer-events: none;
+  /* Face ca butonul să fie inactiv și să nu poată fi apăsat */
+}
+
 .reg-input:focus {
   outline: none;
 }

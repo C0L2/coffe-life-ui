@@ -15,3 +15,10 @@ export const askQuestions = (question: string) => {
     })
 }
 
+export const voteSurvey = (is_pro: boolean, question: number) => {
+    const answer_text = is_pro ? "Yes" : "No";
+    return axios.post(URL + "survey/answers", {
+        answer_text, is_pro, question
+    })
+}
+
