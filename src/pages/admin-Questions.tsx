@@ -17,7 +17,7 @@ const AdminQuestions = () => {
     getAllQuestions().then((res) => {
       setQlist(res.data);
     });
-  }, []);
+  }, [qList]);
 
   return (
     <>

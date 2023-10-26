@@ -10,9 +10,9 @@ const AdminMeets = () => {
   useEffect(() => {
     getAllUsers().then((res) => {
       setUsersList(res.data);
-      console.log(usersList);
     });
-  }, []);
+  }, [usersList]);
+
   return (
     <>
       <div className="q-header">
