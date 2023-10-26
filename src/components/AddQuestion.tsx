@@ -1,17 +1,16 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
+import { askQuestions } from "../api";
 
 import "react-toastify/dist/ReactToastify.css";
 
 const AddQuestion = () => {
   const [text, setText] = useState("Ask a question");
-  // const [textAreaHeight, setTextAreaHeight] = useState("auto");
   const [cardHeight, setCardHeight] = useState("auto");
   const navigate = useNavigate();
   const handleTextChange = (event: any) => {
     setText(event.target.value);
-    // setTextAreaHeight("auto");
     setCardHeight("auto");
   };
 
@@ -32,11 +31,14 @@ const AddQuestion = () => {
   function handleSubmit(event: any) {
     event.preventDefault();
 
-    toast.success("Successfully submited!");
-
-    setTimeout(() => {
-      navigate("/menu");
-    }, 1500);
+    askQuestions(text).then((res) => {
+      console.log(res);
+      setText("Ask a question");
+      toast.success("Successfully submited!");
+      setTimeout(() => {
+        navigate("/menu");
+      }, 1700);
+    });
   }
 
   return (

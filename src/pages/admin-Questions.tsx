@@ -50,7 +50,7 @@ const AdminQuestions = () => {
         question="What is new in Ukraine?What is new in Ukraine?What is new in Ukraine?What is new in Ukraine?What is new in Ukraine?What is new in Ukraine?What is new in Ukraine?What is new in Ukraine?"
       />
 
-      <p className="paragraf-bottom">Coffe & Life</p>
+      <p className="paragraf-bottom">Coffee & Life</p>
     </>
   );
 };

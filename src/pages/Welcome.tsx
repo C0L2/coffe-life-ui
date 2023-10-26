@@ -21,7 +21,7 @@ const Welcome = () => {
           NEXT
         </button>
       </div>
-      <div className="coffe-life-txt">Coffe & Life</div>
+      <div className="coffe-life-txt">Coffee & Life</div>
     </div>
   );
 };

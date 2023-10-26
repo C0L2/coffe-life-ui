@@ -51,7 +51,7 @@ const MeetFriends = () => {
         />
       </div>
 
-      <p className="paragraf-bottom">Coffe & Life</p>
+      <p className="paragraf-bottom">Coffee & Life</p>
     </>
   );
 };

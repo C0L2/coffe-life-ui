@@ -27,7 +27,7 @@ const Menu = () => {
           color="#4DDEB0"
         />
       </div>
-      <p className="paragraf-bottom-special">Coffe & Life</p>
+      <p className="paragraf-bottom-special">Coffee & Life</p>
     </>
   );
 };

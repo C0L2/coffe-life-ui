@@ -41,7 +41,7 @@ const TakeQuiz = () => {
         </div>
       </div>
       <Quiz />
-      <p className="paragraf-bottom">Coffe & Life</p>
+      <p className="paragraf-bottom">Coffee & Life</p>
     </>
   );
 };

@@ -62,7 +62,7 @@ const AdminMeets = () => {
       </div>
       <hr />
       <UserInfo firstName="Samuel" lastName="Vacaras" assignedNumber={5} />
-      <p className="paragraf-bottom">Coffe & Life</p>
+      <p className="paragraf-bottom">Coffee & Life</p>
     </>
   );
 };
