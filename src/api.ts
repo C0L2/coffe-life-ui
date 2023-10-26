@@ -30,3 +30,11 @@ export const getMyNymber = () => {
     })
 }
 
+export const getAllQuestions = () => {
+    return axios.get(URL + "questions/all")
+}
+
+export const deleteQuestion = (id: number) => {
+    return axios.delete(URL + `questions/${id}`)
+}
+

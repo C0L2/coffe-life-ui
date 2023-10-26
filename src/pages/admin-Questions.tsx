@@ -1,8 +1,24 @@
 import { useNavigate } from "react-router-dom";
 import { AdminQuestion } from "../components/AdminQuestion";
+import { useEffect, useState } from "react";
+import { getAllQuestions } from "../api";
+
+export interface Quesions {
+  id: number;
+  question: string;
+  nickname: string;
+}
 
 const AdminQuestions = () => {
   const navigate = useNavigate();
+  const [qList, setQlist] = useState<Quesions[]>([]);
+
+  useEffect(() => {
+    getAllQuestions().then((res) => {
+      setQlist(res.data);
+    });
+  }, []);
+
   return (
     <>
       <div className="q-header">
@@ -41,14 +57,14 @@ const AdminQuestions = () => {
         </div>
       </div>
 
-      <AdminQuestion
-        user="Sam"
-        question="What is new in Ukraine?What is new in Ukraine?What is new in Ukraine?What is new in Ukraine?What is new in Ukraine?What is new in Ukraine?What is new in Ukraine?What is new in Ukraine?"
-      />
-      <AdminQuestion
-        user="Sam"
-        question="What is new in Ukraine?What is new in Ukraine?What is new in Ukraine?What is new in Ukraine?What is new in Ukraine?What is new in Ukraine?What is new in Ukraine?What is new in Ukraine?"
-      />
+      {qList.map((question) => (
+        <AdminQuestion
+          key={question.id}
+          id={question.id}
+          user={question.nickname}
+          question={question.question}
+        />
+      ))}
 
       <p className="paragraf-bottom">Coffee & Life</p>
     </>
