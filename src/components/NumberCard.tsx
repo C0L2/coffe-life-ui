@@ -1,10 +1,18 @@
+import { useEffect, useState } from "react";
+import { getMyNymber } from "../api";
+
 const NumberCard = () => {
-  function handleClick() {}
+  const [myNumber, setMyNumber] = useState<number>(0);
+
+  useEffect(() => {
+    getMyNymber().then((res) => {
+      setMyNumber(res.data.assignedNumber);
+    });
+  }, []);
 
   return (
     <div
       className="menu-card-2"
-      onClick={handleClick}
       style={{ background: `#DC7755`, marginBottom: "10px", display: "flex" }}
     >
       <div className="title-with-icon-2" style={{ flex: 1 }}>
@@ -39,7 +47,7 @@ const NumberCard = () => {
             fontSize="36"
             fill="black"
           >
-            25
+            {myNumber}
           </text>
         </svg>
       </div>
