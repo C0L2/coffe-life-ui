@@ -1,7 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { getSurveyResult } from "../api";
-import { SurveyResult } from "../interfaces/SurveyResults";
 
 const AdminQuiz = () => {
   const navigate = useNavigate();
@@ -59,15 +58,20 @@ const AdminQuiz = () => {
         </div>
       </div>
       <hr />
-      <div className="join-bnt-container">
+      {/* <div className="join-bnt-container">
         <button
           className="join-btn"
           style={{ width: "auto", marginTop: "1px" }}
         >
           GET UPDATED DATA
         </button>
+      </div> */}
+      <div
+        className="quiz-results"
+        style={{ paddingTop: "15px", fontSize: "20px" }}
+      >
+        {results}
       </div>
-      <div className="quiz-results">{results}</div>
 
       <p className="paragraf-bottom">Coffee & Life</p>
     </>
