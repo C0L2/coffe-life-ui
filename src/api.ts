@@ -26,6 +26,10 @@ export const voteSurvey = (is_pro: boolean, question: number) => {
     })
 }
 
+export const getSurveyResult = () => {
+    return axios.get(URL + `survey/1`)
+}
+
 export const getMyNymber = () => {
     const nickname = localStorage.getItem('nickname')
 
