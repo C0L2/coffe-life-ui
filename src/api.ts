@@ -1,6 +1,6 @@
 import axios from "axios";
 import { User } from "./interfaces/user.interface"
-const URL = import.meta.env.VITE_API_URL
+const URL = "https://easy-gray-elephant-tutu.cyclic.app/"
 
 export const regNewUser = (firstName: string, lastName: string, nickname: string, phone: string) => {
     checkNickname(nickname).then((res) => {
