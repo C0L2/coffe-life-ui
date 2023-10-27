@@ -15,7 +15,7 @@ function Registration() {
   const navigate = useNavigate();
   const [formData, setFormData] = useState<FormData>(initialFormData);
   const [formErrors, setFormErrors] = useState<Partial<FormData>>({});
-
+  const [usedNickname, setUsedNickname] = useState<boolean>(false);
   const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
@@ -41,10 +41,14 @@ function Registration() {
         formData.surname,
         formData.nickname,
         formData.mobileNumber
-      ).then(() => {
-        localStorage.setItem("nickname", formData.nickname);
-        if (formData.nickname === "admin-sigma") navigate("admin-welcome");
-        else navigate("/welcome");
+      ).then((res) => {
+        if (res.data.message === "This nickname is already taken") {
+          setUsedNickname(true);
+        } else {
+          localStorage.setItem("nickname", formData.nickname);
+          if (formData.nickname === "admin-sigma") navigate("admin-welcome");
+          else navigate("/welcome");
+        }
       });
     }
   };
@@ -65,7 +69,7 @@ function Registration() {
               type="text"
               name="name"
               required
-              placeholder="Name"
+              placeholder="Name*"
               value={formData.name}
               onChange={handleInputChange}
             />
@@ -79,7 +83,7 @@ function Registration() {
               type="text"
               name="surname"
               required
-              placeholder="Surname"
+              placeholder="Surname*"
               value={formData.surname}
               onChange={handleInputChange}
             />
@@ -93,7 +97,7 @@ function Registration() {
               type="text"
               name="nickname"
               required
-              placeholder="Nickname"
+              placeholder="Nickname*"
               value={formData.nickname}
               onChange={handleInputChange}
             />
@@ -114,6 +118,13 @@ function Registration() {
               <div className="error-message">{formErrors.mobileNumber}</div>
             )}
           </div>
+          {usedNickname ? (
+            <p style={{ color: "#F4F389", marginBottom: 0 }}>
+              This nickname is already used
+            </p>
+          ) : (
+            ""
+          )}
           <div className="join-bnt-container">
             <button className="join-btn" type="submit" style={{}}>
               JOIN

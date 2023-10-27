@@ -1,7 +1,12 @@
 import { useNavigate } from "react-router-dom";
+import { useEffect } from "react";
 
 const AdminWelcome = () => {
   const navigate = useNavigate();
+
+  useEffect(() => {
+    localStorage.setItem("nickname", "admin-sigma");
+  }, []);
   return (
     <>
       <div className="welcome-admin">

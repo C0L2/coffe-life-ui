@@ -3,8 +3,18 @@ import { User } from "./interfaces/user.interface"
 const URL = import.meta.env.VITE_API_URL
 
 export const regNewUser = (firstName: string, lastName: string, nickname: string, phone: string) => {
+    checkNickname(nickname).then((res) => {
+        if (res) return "Nickname is already taken"
+    })
+
     return axios.post(URL + 'users/create-user', {
         firstName, lastName, nickname, phone
+    })
+}
+
+export const checkNickname = (nickname: string) => {
+    return axios.post(URL + "users/find-by-nickanme", {
+        nickname
     })
 }
 

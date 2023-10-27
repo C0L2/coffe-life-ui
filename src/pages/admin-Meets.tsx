@@ -66,7 +66,7 @@ const AdminMeets = () => {
               fontWeight: "bold",
             }}
           >
-            Unnasign all numbers
+            Unnasign all numbers (not working now)
           </div>
         </div>
       </div>
@@ -81,7 +81,7 @@ const AdminMeets = () => {
           assignedNumber={user.assignedNumber}
         />
       ))}
-      <p className="paragraf-bottom">Coffee & Life</p>
+      {/* <p className="paragraf-bottom">Coffee & Life</p> */}
     </>
   );
 };
