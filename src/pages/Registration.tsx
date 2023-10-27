@@ -36,20 +36,23 @@ function Registration() {
     if (Object.keys(errors).length > 0) {
       setFormErrors(errors);
     } else {
-      regNewUser(
-        formData.name,
-        formData.surname,
-        formData.nickname,
-        formData.mobileNumber
-      ).then((res) => {
-        if (res.data.message === "This nickname is already taken") {
-          setUsedNickname(true);
-        } else {
-          localStorage.setItem("nickname", formData.nickname);
-          if (formData.nickname === "admin-sigma") navigate("admin-welcome");
-          else navigate("/welcome");
-        }
-      });
+      if (formData.nickname === "admin-sigma") navigate("admin-welcome");
+      else {
+        regNewUser(
+          formData.name,
+          formData.surname,
+          formData.nickname,
+          formData.mobileNumber
+        ).then((res) => {
+          if (res.data.message === "This nickname is already taken") {
+            setUsedNickname(true);
+          } else {
+            localStorage.setItem("nickname", formData.nickname);
+            if (formData.nickname === "admin-sigma") navigate("admin-welcome");
+            else navigate("/welcome");
+          }
+        });
+      }
     }
   };
 
