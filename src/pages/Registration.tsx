@@ -1,4 +1,4 @@
-import { useState, ChangeEvent, FormEvent } from "react";
+import { useState, ChangeEvent, FormEvent, useEffect } from "react";
 import LogoComponent from "../components/LogoComponent";
 import { useNavigate } from "react-router-dom";
 import { FormData } from "../interfaces/FormData";
@@ -11,6 +11,22 @@ function Registration() {
     nickname: "",
     mobileNumber: "",
   };
+
+  useEffect(() => {
+    if (
+      localStorage.getItem("nickname") &&
+      localStorage.getItem("nickname") !== "admin-sigma"
+    ) {
+      navigate("/welcome");
+    }
+
+    if (
+      localStorage.getItem("nickname") &&
+      localStorage.getItem("nickname") === "admin-sigma"
+    ) {
+      navigate("/admin-welcome");
+    }
+  }, []);
 
   const navigate = useNavigate();
   const [formData, setFormData] = useState<FormData>(initialFormData);

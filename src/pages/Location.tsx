@@ -40,9 +40,9 @@ const Location = () => {
           </svg>
         </div>
       </div>
-      <div className="map-container">
+      {/*   <div className="map-container">
         <div className="map">Here will be displayed a map</div>
-      </div>
+      </div> */}
 
       <div>
         <QuestionsCard />

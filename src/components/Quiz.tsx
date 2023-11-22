@@ -53,7 +53,7 @@ const Quiz = () => {
         <p
           style={{ marginLeft: "20px", marginTop: "45px", marginRight: "10px" }}
         >
-          Считаешь ли ты настоящим счатьем жизнь с Богом?
+          Зависит ли счастье человека от уровня его материального благополучия?
         </p>
 
         <div className="join-bnt-container" style={{ paddingTop: "5px" }}>
