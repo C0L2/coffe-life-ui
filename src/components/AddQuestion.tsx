@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import { useAskQuestionsMutation } from "../api";
 
@@ -8,10 +7,8 @@ import "react-toastify/dist/ReactToastify.css";
 const AddQuestion = () => {
   const [text, setText] = useState("Ask a question");
   const [cardHeight, setCardHeight] = useState("auto");
-  const [askQuestions, { isSuccess, isError, error }] =
-    useAskQuestionsMutation();
+  const [askQuestions, { isSuccess }] = useAskQuestionsMutation();
 
-  const navigate = useNavigate();
   const handleTextChange = (event: any) => {
     setText(event.target.value);
     setCardHeight("auto");
@@ -34,14 +31,7 @@ const AddQuestion = () => {
   function handleSubmit(event: any) {
     event.preventDefault();
     const nickname = localStorage.getItem("nickname");
-
     askQuestions({ question: text, nickname });
-    /* askQuestions(text).then((res) => {
-      console.log(res);
-      setTimeout(() => {
-        navigate("/menu");
-      }, 1700);
-    }); */
   }
 
   useEffect(() => {
