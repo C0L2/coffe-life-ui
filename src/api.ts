@@ -1,7 +1,7 @@
 // apiSlice.ts
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 import { configureStore } from '@reduxjs/toolkit';
-import { FormData } from './types';
+import { AddQuestion, FormData } from './types';
 
 const URL = 'http://localhost:9500/';
 
@@ -31,7 +31,7 @@ export const api = createApi({
             query: () => 'users/all-users',
         }),
         askQuestions: builder.mutation({
-            query: (question) => ({
+            query: (question: AddQuestion) => ({
                 url: 'questions/create-question',
                 method: 'POST',
                 body: question,

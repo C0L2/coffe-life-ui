@@ -5,6 +5,11 @@ export interface FormData {
     mobileNumber: string;
 }
 
+export interface AddQuestion {
+    question: string;
+    nickname: string | null;
+}
+
 export interface AdminQuestions {
     key: number;
     id: number;

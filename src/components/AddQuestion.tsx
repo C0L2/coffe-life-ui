@@ -1,13 +1,16 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
-// import { askQuestions } from "../api";
+import { useAskQuestionsMutation } from "../api";
 
 import "react-toastify/dist/ReactToastify.css";
 
 const AddQuestion = () => {
   const [text, setText] = useState("Ask a question");
   const [cardHeight, setCardHeight] = useState("auto");
+  const [askQuestions, { isSuccess, isError, error }] =
+    useAskQuestionsMutation();
+
   const navigate = useNavigate();
   const handleTextChange = (event: any) => {
     setText(event.target.value);
@@ -30,16 +33,26 @@ const AddQuestion = () => {
 
   function handleSubmit(event: any) {
     event.preventDefault();
+    const nickname = localStorage.getItem("nickname");
 
+    askQuestions({ question: text, nickname });
     /* askQuestions(text).then((res) => {
       console.log(res);
-      setText("Ask a question");
-      toast.success("Successfully submited!");
       setTimeout(() => {
         navigate("/menu");
       }, 1700);
     }); */
   }
+
+  useEffect(() => {
+    if (isSuccess) {
+      setText("Ask a question");
+      toast.success("Успешно отправлено! | Trimis cu succes!", {
+        autoClose: 2000,
+        position: "bottom-center",
+      });
+    }
+  }, [isSuccess]);
 
   return (
     <>
@@ -65,25 +78,13 @@ const AddQuestion = () => {
             onChange={handleTextChange}
             onInput={handleTextAreaResize}
             onFocus={() => setText("")}
-            style={{
-              minHeight: "50px",
-              background: "transparent",
-              border: "none",
-              fontSize: "16px",
-              opacity: "75%",
-              marginTop: "10px",
-              marginLeft: "10px",
-              resize: "none",
-              overflow: "hidden",
-            }}
+            className="textarea-style"
           />
         </div>
-        <div className="join-bnt-container">
-          <button className="join-btn" onClick={handleSubmit}>
-            SEND
-          </button>
-          <ToastContainer autoClose={500} />
-        </div>
+        <button className="next-btn" onClick={handleSubmit}>
+          SEND
+        </button>
+        <ToastContainer autoClose={500} />
       </div>
     </>
   );

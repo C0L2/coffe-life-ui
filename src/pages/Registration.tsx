@@ -28,7 +28,7 @@ const Registration: FC = () => {
   useEffect(() => {
     if (isSuccess) {
       setLoading(false);
-      localStorage.setItem("nickaname", formData.nickname);
+      localStorage.setItem("nickname", formData.nickname);
       navigate("/welcome");
     }
   }, [isSuccess]);
