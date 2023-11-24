@@ -55,12 +55,10 @@ const Registration: FC = () => {
     if (formData.nickname === "sigma-admin-for-coffe-life") {
       navigate("/admin-welcome");
     } else {
-      if (formData.nickname.length < 4) {
-        regNewUser({
-          nickname: formData.nickname,
-          mobileNumber: formData.mobileNumber,
-        });
-      }
+      regNewUser({
+        nickname: formData.nickname,
+        mobileNumber: formData.mobileNumber,
+      });
     }
   };
 

@@ -70,3 +70,9 @@ export interface LoadingLayoutProps {
 export interface AppProviderProps {
     children: React.ReactNode;
 }
+
+export interface Vote {
+    answer_text: string;
+    is_pro: boolean;
+    question: number;
+}

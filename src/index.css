@@ -150,6 +150,28 @@ body {
   bottom: 40px;
 }
 
+.quizz-button {
+  outline: none;
+  border: none;
+  border-radius: 30px;
+  background: #F4F389;
+  width: 111px;
+  height: 40px;
+  color: #2F2F2F;
+  text-align: center;
+  font-family: Montserrat;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  position: absolute;
+}
+
+.quizz-button.disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
 .next-btn {
   outline: none;
   border: none;
