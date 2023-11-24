@@ -1,7 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import { AdminQuestion } from "../components/AdminQuestion";
 import { useEffect, useState } from "react";
-import { getAllQuestions } from "../api";
+// import { getAllQuestions } from "../api";
 
 export interface Quesions {
   id: number;
@@ -14,9 +14,9 @@ const AdminQuestions = () => {
   const [qList, setQlist] = useState<Quesions[]>([]);
 
   useEffect(() => {
-    getAllQuestions().then((res) => {
+    /* getAllQuestions().then((res) => {
       setQlist(res.data);
-    });
+    }); */
   }, [qList]);
 
   return (

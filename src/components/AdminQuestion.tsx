@@ -1,8 +1,9 @@
-import { deleteQuestion } from "../api";
+// import { deleteQuestion } from "../api";
+import { AdminQuestions } from "../types";
 
 export const AdminQuestion: React.FC<AdminQuestions> = (props) => {
   const handleDeleteQuestion = () => {
-    deleteQuestion(props.id).then();
+    // deleteQuestion(props.id).then();
   };
 
   return (

@@ -1,16 +1,16 @@
 import { useNavigate } from "react-router-dom";
-import UserInfo from "../components/UserInfo";
+import AboutUser from "../components/AboutUser";
 import { useState, useEffect } from "react";
-import { getAllUsers } from "../api";
+// import { getAllUsers } from "../api";
 
 const AdminMeets = () => {
   const navigate = useNavigate();
   const [usersList, setUsersList] = useState<any>([]);
 
   useEffect(() => {
-    getAllUsers().then((res) => {
+    /*  getAllUsers().then((res) => {
       setUsersList(res.data);
-    });
+    }); */
   }, [usersList]);
 
   return (
@@ -73,7 +73,7 @@ const AdminMeets = () => {
       <hr />
 
       {usersList.map((user: any) => (
-        <UserInfo
+        <AboutUser
           key={user.id}
           id={user.id}
           firstName={user.firstName}

@@ -1,4 +1,5 @@
 import { useNavigate } from "react-router-dom";
+import { MenuCardProps } from "../types";
 
 const MenuCard: React.FC<MenuCardProps> = (props) => {
   const navigate = useNavigate();

@@ -1,8 +1,8 @@
 import { useState, ChangeEvent, FormEvent, useEffect } from "react";
 import LogoComponent from "../components/LogoComponent";
 import { useNavigate } from "react-router-dom";
-import { FormData } from "../interfaces/FormData";
-import { regNewUser } from "../api";
+import { FormData } from "../types";
+// import { regNewUser } from "../api";
 
 function Registration() {
   const initialFormData: FormData = {
@@ -54,7 +54,7 @@ function Registration() {
     } else {
       if (formData.nickname === "admin-sigma") navigate("admin-welcome");
       else {
-        regNewUser(
+        /*  regNewUser(
           formData.name,
           formData.surname,
           formData.nickname,
@@ -67,7 +67,7 @@ function Registration() {
             if (formData.nickname === "admin-sigma") navigate("admin-welcome");
             else navigate("/welcome");
           }
-        });
+        }); */
       }
     }
   };

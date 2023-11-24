@@ -1,4 +1,4 @@
-import { QuestionProp } from "../interfaces/QuestionProp";
+import { QuestionProp } from "../types";
 
 const QuestionExample: React.FC<QuestionProp> = (props) => {
   return (

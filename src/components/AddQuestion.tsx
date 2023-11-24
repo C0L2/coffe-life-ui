@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
-import { askQuestions } from "../api";
+// import { askQuestions } from "../api";
 
 import "react-toastify/dist/ReactToastify.css";
 
@@ -31,14 +31,14 @@ const AddQuestion = () => {
   function handleSubmit(event: any) {
     event.preventDefault();
 
-    askQuestions(text).then((res) => {
+    /* askQuestions(text).then((res) => {
       console.log(res);
       setText("Ask a question");
       toast.success("Successfully submited!");
       setTimeout(() => {
         navigate("/menu");
       }, 1700);
-    });
+    }); */
   }
 
   return (

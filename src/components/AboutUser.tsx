@@ -1,4 +1,6 @@
-const UserInfo: React.FC<UserInfo> = (props) => {
+import { UserInfo } from "../types";
+
+const AboutUser: React.FC<UserInfo> = (props) => {
   const fullName = props.firstName + " " + props.lastName;
   return (
     <>
@@ -32,4 +34,4 @@ const UserInfo: React.FC<UserInfo> = (props) => {
   );
 };
 
-export default UserInfo;
+export default AboutUser;

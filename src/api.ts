@@ -1,58 +1,66 @@
-import axios from "axios";
-import { User } from "./interfaces/user.interface"
-const URL = "https://easy-gray-elephant-tutu.cyclic.app/"
+// apiSlice.ts
+import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
+import { User } from './types';
 
-export const regNewUser = (firstName: string, lastName: string, nickname: string, phone: string) => {
-    checkNickname(nickname).then((res) => {
-        if (res) return "Nickname is already taken"
-    })
+const URL = 'https://easy-gray-elephant-tutu.cyclic.app/';
 
-    return axios.post(URL + 'users/create-user', {
-        firstName, lastName, nickname, phone
-    })
-}
+export const api = createApi({
+    reducerPath: 'api',
+    baseQuery: fetchBaseQuery({ baseUrl: URL }),
+    endpoints: (builder) => ({
+        regNewUser: builder.mutation({
+            query: (data) => ({
+                url: 'users/create-user',
+                method: 'POST',
+                body: data,
+            }),
+        }),
+        checkNickname: builder.query({
+            query: (nickname) => `users/find-by-nickanme?nickname=${nickname}`,
+        }),
+        getAllUsers: builder.query({
+            query: () => 'users/all-users',
+        }),
+        askQuestions: builder.mutation({
+            query: (question) => ({
+                url: 'questions/create-question',
+                method: 'POST',
+                body: question,
+            }),
+        }),
+        voteSurvey: builder.mutation({
+            query: ({ is_pro, question }) => ({
+                url: 'survey/answers',
+                method: 'POST',
+                body: { answer_text: is_pro ? 'Yes' : 'No', is_pro, question },
+            }),
+        }),
+        getSurveyResult: builder.query({
+            query: () => 'survey/1',
+        }),
+        getMyNumber: builder.query({
+            query: () => `users/find-by-nickanme?nickname=${localStorage.getItem('nickname')}`,
+        }),
+        getAllQuestions: builder.query({
+            query: () => 'questions/all',
+        }),
+        deleteQuestion: builder.mutation({
+            query: (id) => ({
+                url: `questions/${id}`,
+                method: 'DELETE',
+            }),
+        }),
+    }),
+});
 
-export const checkNickname = (nickname: string) => {
-    return axios.post(URL + "users/find-by-nickanme", {
-        nickname
-    })
-}
-
-export const getAllUsers = () => {
-    return axios.get(URL + "users/all-users")
-}
-
-export const askQuestions = (question: string) => {
-    return axios.post(URL + 'questions/create-question', {
-        question,
-        nickname: localStorage.getItem('nickname')
-    })
-}
-
-export const voteSurvey = (is_pro: boolean, question: number) => {
-    const answer_text = is_pro ? "Yes" : "No";
-    return axios.post(URL + "survey/answers", {
-        answer_text, is_pro, question
-    })
-}
-
-export const getSurveyResult = () => {
-    return axios.get(URL + `survey/1`)
-}
-
-export const getMyNymber = () => {
-    const nickname = localStorage.getItem('nickname')
-
-    return axios.post<User>(URL + "users/find-by-nickanme", {
-        nickname
-    })
-}
-
-export const getAllQuestions = () => {
-    return axios.get(URL + "questions/all")
-}
-
-export const deleteQuestion = (id: number) => {
-    return axios.delete(URL + `questions/${id}`)
-}
-
+export const {
+    useRegNewUserMutation,
+    useCheckNicknameQuery,
+    useGetAllUsersQuery,
+    useAskQuestionsMutation,
+    useVoteSurveyMutation,
+    useGetSurveyResultQuery,
+    useGetMyNumberQuery,
+    useGetAllQuestionsQuery,
+    useDeleteQuestionMutation,
+} = api;

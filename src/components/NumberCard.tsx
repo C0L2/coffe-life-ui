@@ -1,13 +1,13 @@
 import { useEffect, useState } from "react";
-import { getMyNymber } from "../api";
+// import { getMyNymber } from "../api";
 
 const NumberCard = () => {
   const [myNumber, setMyNumber] = useState<number>(0);
 
   useEffect(() => {
-    getMyNymber().then((res) => {
+    /*   getMyNymber().then((res) => {
       setMyNumber(res.data.assignedNumber);
-    });
+    }); */
   }, []);
 
   return (

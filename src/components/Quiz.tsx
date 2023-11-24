@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom";
-import { voteSurvey } from "../api";
+// import { voteSurvey } from "../api";
 import { useState, useEffect } from "react";
 
 const Quiz = () => {
@@ -15,23 +15,23 @@ const Quiz = () => {
   function voteYes(event: any) {
     event.preventDefault();
     const is_pro: boolean = true;
-    voteSurvey(is_pro, 1).then((res) => {
+    /*  voteSurvey(is_pro, 1).then((res) => {
       if (res.status === 201) {
         localStorage.setItem("voted", "yes");
         navigate("/qz-response");
       }
-    });
+    }); */
   }
 
   function voteNo(event: any) {
     event.preventDefault();
     const is_pro: boolean = false;
-    voteSurvey(is_pro, 1).then((res) => {
+    /*  voteSurvey(is_pro, 1).then((res) => {
       if (res.status === 201) {
         localStorage.setItem("voted", "yes");
         navigate("/qz-response");
       }
-    });
+    }); */
   }
   return (
     <div className="map-container" style={{ marginTop: "60px" }}>
