@@ -44,7 +44,6 @@ const Registration: FC = () => {
   const navigate = useNavigate();
   const [formData, setFormData] = useState<FormData>(initialFormData);
   const [usedNickname, setUsedNickname] = useState<boolean>(false);
-  const [nicknameError, setNicknameError] = useState<string | null>(null);
 
   const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
@@ -57,9 +56,6 @@ const Registration: FC = () => {
       navigate("/admin-welcome");
     } else {
       if (formData.nickname.length < 4) {
-        setNicknameError("Nickname-ul trebuie să aibă cel puțin 4 caractere.");
-      } else {
-        setNicknameError(null);
         regNewUser({
           nickname: formData.nickname,
           mobileNumber: formData.mobileNumber,
