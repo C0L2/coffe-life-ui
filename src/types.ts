@@ -1,6 +1,6 @@
+import { ReactNode } from "react";
+
 export interface FormData {
-    name: string;
-    surname: string;
     nickname: string;
     mobileNumber: string;
 }
@@ -48,3 +48,10 @@ export interface UserInfo {
     assignedNumber: number
 }
 
+export interface LoadingOverlayProps {
+    isOpen: boolean;
+}
+
+export interface LoadingLayoutProps {
+    children: ReactNode;
+}
