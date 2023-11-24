@@ -46,9 +46,9 @@ const MyNumber = () => {
       </div>
       <NumberCard />
       <p style={{ color: "#F4F389", textAlign: "center" }}>
-        Найди еще 3 человека с такой же цыфрои
+        Найди еще людей с такой же цыфрои
         <br />
-        Găsește încă 3 oameni cu aceeași cifră
+        Găsește încă oameni cu aceeași cifră
         <button className="talk-btn" onClick={() => navigate("/location")}>
           Поговорить с друзями
         </button>
