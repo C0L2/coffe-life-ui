@@ -1,18 +1,11 @@
 import { useEffect, useState } from "react";
 import { useGetMyNumberMutation } from "../api";
-import LoadingOverlay from "../pages/Layouts/LoadingOverlay";
 
 const NumberCard = () => {
   const nickname = localStorage.getItem("nickname");
   const [myNumber, setMyNumber] = useState<number>(0);
-  const [getMyNumber, { data, isLoading, isSuccess, isError, error }] =
+  const [getMyNumber, { data, isLoading, isSuccess }] =
     useGetMyNumberMutation();
-
-  /*useEffect(() => {
-      getMyNymber().then((res) => {
-      setMyNumber(res.data.assignedNumber);
-    }); 
-  }, []);*/
 
   useEffect(() => {
     if (nickname) {
