@@ -1,24 +1,27 @@
 import { useNavigate } from "react-router-dom";
-import { useState } from "react";
-// import { getSurveyResult } from "../api";
+import { useEffect, useState } from "react";
+import { useGetSurveyResultQuery } from "../api";
+import LoadingOverlay from "./Layouts/LoadingOverlay";
 
 const AdminQuiz = () => {
-  const navigate = useNavigate();
+  const { data, isLoading } = useGetSurveyResultQuery();
   const [results, setResults] = useState<string>("");
+  const navigate = useNavigate();
 
-  // const [surveyResult, setSurveyResult] = useState<any>({});
-
-  // useEffect(() => {
-  /* getSurveyResult().then((res) => {
-      setSurveyResult(res.data[0]);
-      var suma = surveyResult!.contraVotes + surveyResult!.proVotes;
+  useEffect(() => {
+    if (data) {
+      console.log("fine");
+      // setSurveyResult();
+      var suma = data[0]?.contraVotes + data[0]?.proVotes;
       setResults(
-        `Votes:  ${suma}  | Yes: ${surveyResult!.proPercentage}% |  No ${
-          surveyResult!.contraPercentage
-        }%`
+        `Votes:  ${suma}  | Yes: ${data[0].proPercentage}% |  No ${data[0].contraPercentage}%`
       );
-    }); */
-  // }, [surveyResult]);/*  */
+    }
+  }, [data]);
+
+  if (isLoading || !data) {
+    return <LoadingOverlay />;
+  }
 
   return (
     <>

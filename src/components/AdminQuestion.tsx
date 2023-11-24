@@ -1,10 +1,17 @@
-// import { deleteQuestion } from "../api";
 import { AdminQuestions } from "../types";
+import { useDeleteQuestionMutation } from "../api";
+import LoadingOverlay from "../pages/Layouts/LoadingOverlay";
 
 export const AdminQuestion: React.FC<AdminQuestions> = (props) => {
+  const [deleteQuestion, { isLoading }] = useDeleteQuestionMutation();
+
   const handleDeleteQuestion = () => {
-    // deleteQuestion(props.id).then();
+    deleteQuestion(props.id);
   };
+
+  if (isLoading) {
+    return <LoadingOverlay />;
+  }
 
   return (
     <>

@@ -15,6 +15,12 @@ export interface ExpandableContentProps {
     expandedHeight: number;
 }
 
+export interface Survey {
+    proVotes: number;
+    contraVotes: number;
+    proPercentage: number;
+    contraPercentage: number;
+}
 
 export interface AdminQuestions {
     key: number;
@@ -44,8 +50,6 @@ export interface SurveyResult {
 
 export interface User {
     id: number;
-    firstName: string;
-    lastName: string;
     nickname: string;
     phone: string | null;
     assignedNumber: number;
@@ -54,9 +58,14 @@ export interface User {
 
 export interface UserInfo {
     id: number;
-    firstName: string,
-    lastName: string,
+    nickname: string;
     assignedNumber: number
+}
+
+export interface Question {
+    id: number;
+    question: string;
+    nickname: string;
 }
 
 export interface LoadingOverlayProps {

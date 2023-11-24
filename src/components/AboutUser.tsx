@@ -1,7 +1,7 @@
 import { UserInfo } from "../types";
 
 const AboutUser: React.FC<UserInfo> = (props) => {
-  const fullName = props.firstName + " " + props.lastName;
+  console.log(props);
   return (
     <>
       <div className="welcome-admin">
@@ -17,7 +17,7 @@ const AboutUser: React.FC<UserInfo> = (props) => {
                 fontWeight: "bold",
               }}
             >
-              {fullName}
+              {props.nickname}
             </div>
             <div className="access-card">{props.assignedNumber}</div>
           </div>
