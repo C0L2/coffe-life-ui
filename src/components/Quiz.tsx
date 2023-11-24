@@ -1,10 +1,18 @@
 import { useNavigate } from "react-router-dom";
 // import { voteSurvey } from "../api";
 import { useState, useEffect } from "react";
+import { useVoteSurveyMutation } from "../api";
 
 const Quiz = () => {
   const navigate = useNavigate();
   const [voted, setVoted] = useState(!!localStorage.getItem("voted"));
+  const [voteSurvey, { isSuccess }] = useVoteSurveyMutation();
+
+  useEffect(() => {
+    if (isSuccess) {
+      navigate("/qz-response");
+    }
+  }, [isSuccess]);
 
   useEffect(() => {
     if (localStorage.getItem("voted")) {
@@ -15,24 +23,19 @@ const Quiz = () => {
   function voteYes(event: any) {
     event.preventDefault();
     const is_pro: boolean = true;
-    /*  voteSurvey(is_pro, 1).then((res) => {
-      if (res.status === 201) {
-        localStorage.setItem("voted", "yes");
-        navigate("/qz-response");
-      }
-    }); */
+    localStorage.setItem("voted", "yes");
+    setVoted(true);
+    voteSurvey({ is_pro, question: 1 });
   }
 
   function voteNo(event: any) {
     event.preventDefault();
     const is_pro: boolean = false;
-    /*  voteSurvey(is_pro, 1).then((res) => {
-      if (res.status === 201) {
-        localStorage.setItem("voted", "yes");
-        navigate("/qz-response");
-      }
-    }); */
+    localStorage.setItem("voted", "no");
+    setVoted(true);
+    voteSurvey({ is_pro, question: 1 });
   }
+
   return (
     <div className="map-container" style={{ marginTop: "60px" }}>
       <svg
@@ -53,23 +56,25 @@ const Quiz = () => {
         <p
           style={{ marginLeft: "20px", marginTop: "45px", marginRight: "10px" }}
         >
-          Зависит ли счастье человека от уровня его материального благополучия?
+          Может ли плач быть полезным в твоей жизни?
         </p>
 
-        <div className="join-bnt-container" style={{ paddingTop: "5px" }}>
+        <div style={{ paddingTop: "5px", height: "60px" }}>
           <button
-            className={`join-btn ${voted ? "disabled" : ""}`}
-            onClick={voteYes}
-            disabled={voted}
-          >
-            Да
-          </button>
-          <button
-            className={`join-btn ${voted ? "disabled" : ""}`}
+            style={{ right: "30px" }}
+            className={`quizz-button ${voted ? "disabled" : ""}`}
             onClick={voteNo}
             disabled={voted}
           >
             Нет
+          </button>
+          <button
+            style={{ left: "30px" }}
+            className={`quizz-button ${voted ? "disabled" : ""}`}
+            onClick={voteYes}
+            disabled={voted}
+          >
+            Да
           </button>
         </div>
       </div>

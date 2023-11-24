@@ -1,37 +1,50 @@
-import { useState, ChangeEvent, FormEvent, useEffect } from "react";
+import { useState, ChangeEvent, FormEvent, useEffect, FC } from "react";
 import LogoComponent from "../components/LogoComponent";
 import { useNavigate } from "react-router-dom";
 import { FormData } from "../types";
-// import { regNewUser } from "../api";
+import useRedirectOnLogin from "../hooks/useRedirectOnLogin";
+import { useRegNewUserMutation } from "../api";
+import LoadingOverlay from "./Layouts/LoadingOverlay";
+import { get } from "react-hook-form";
 
-function Registration() {
+const Registration: FC = () => {
+  useRedirectOnLogin();
+
+  const [regNewUser, { isLoading, isSuccess, error, isError }] =
+    useRegNewUserMutation();
+  const [loading, setLoading] = useState(false);
+
   const initialFormData: FormData = {
-    name: "",
-    surname: "",
     nickname: "",
     mobileNumber: "",
   };
 
   useEffect(() => {
-    if (
-      localStorage.getItem("nickname") &&
-      localStorage.getItem("nickname") !== "admin-sigma"
-    ) {
+    if (isLoading) {
+      setLoading(true);
+    }
+  }, [isLoading]);
+
+  useEffect(() => {
+    if (isSuccess) {
+      setLoading(false);
+      localStorage.setItem("nickname", formData.nickname);
       navigate("/welcome");
     }
+  }, [isSuccess]);
 
-    if (
-      localStorage.getItem("nickname") &&
-      localStorage.getItem("nickname") === "admin-sigma"
-    ) {
-      navigate("/admin-welcome");
+  useEffect(() => {
+    if (isError) {
+      setLoading(false);
+      const error_msg = get(error, "data.message");
+      setUsedNickname(error_msg);
     }
-  }, []);
+  }, [isError]);
 
   const navigate = useNavigate();
   const [formData, setFormData] = useState<FormData>(initialFormData);
-  const [formErrors, setFormErrors] = useState<Partial<FormData>>({});
   const [usedNickname, setUsedNickname] = useState<boolean>(false);
+
   const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
@@ -39,120 +52,76 @@ function Registration() {
 
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-
-    // Validare formular
-    const errors: Partial<FormData> = {};
-    if (formData.name.trim() === "") {
-      errors.name = "Numele este obligatoriu";
-    }
-    if (formData.surname.trim() === "") {
-      errors.surname = "Prenumele este obligatoriu";
-    }
-
-    if (Object.keys(errors).length > 0) {
-      setFormErrors(errors);
+    if (formData.nickname === "sigma-admin-for-coffe-life") {
+      navigate("/admin-welcome");
     } else {
-      if (formData.nickname === "admin-sigma") navigate("admin-welcome");
-      else {
-        /*  regNewUser(
-          formData.name,
-          formData.surname,
-          formData.nickname,
-          formData.mobileNumber
-        ).then((res) => {
-          if (res.data.message === "This nickname is already taken") {
-            setUsedNickname(true);
-          } else {
-            localStorage.setItem("nickname", formData.nickname);
-            if (formData.nickname === "admin-sigma") navigate("admin-welcome");
-            else navigate("/welcome");
-          }
-        }); */
-      }
+      regNewUser({
+        nickname: formData.nickname,
+        mobileNumber: formData.mobileNumber,
+      });
     }
   };
 
   return (
     <>
-      <div className="logo-container">
-        <LogoComponent />
-      </div>
-      <div className="hello-txt-container">
-        <div className="hello-txt">Hello again</div>
-      </div>
-      <div className="center-div">
-        <form className="form" onSubmit={handleSubmit}>
-          <div className="input-group">
-            <input
-              className="reg-input"
-              type="text"
-              name="name"
-              required
-              placeholder="Name*"
-              value={formData.name}
-              onChange={handleInputChange}
-            />
-            {formErrors.name && (
-              <div className="error-message">{formErrors.name}</div>
-            )}
+      {loading ? (
+        <LoadingOverlay></LoadingOverlay>
+      ) : (
+        <>
+          <div className="logo-container">
+            <LogoComponent />
           </div>
-          <div className="input-group">
-            <input
-              className="reg-input"
-              type="text"
-              name="surname"
-              required
-              placeholder="Surname*"
-              value={formData.surname}
-              onChange={handleInputChange}
-            />
-            {formErrors.surname && (
-              <div className="error-message">{formErrors.surname}</div>
-            )}
+          <div className="hello-txt-container">
+            <div className="hello-txt">Hello again</div>
           </div>
-          <div className="input-group">
-            <input
-              className="reg-input"
-              type="text"
-              name="nickname"
-              required
-              placeholder="Nickname*"
-              value={formData.nickname}
-              onChange={handleInputChange}
-            />
-            {formErrors.nickname && (
-              <div className="error-message">{formErrors.nickname}</div>
-            )}
+          <div className="center-div">
+            <form
+              className="form"
+              onSubmit={handleSubmit}
+              style={{ marginTop: "100px" }}
+            >
+              <div>
+                <input
+                  className="reg-input"
+                  type="text"
+                  name="nickname"
+                  placeholder="nickname"
+                  minLength={4}
+                  value={formData.nickname}
+                  onChange={handleInputChange}
+                />
+              </div>
+              <div>
+                <input
+                  className="reg-input"
+                  required
+                  type="text"
+                  name="mobileNumber"
+                  placeholder="mobile number"
+                  value={formData.mobileNumber}
+                  onChange={handleInputChange}
+                />
+              </div>
+              {usedNickname ? (
+                <p style={{ color: "#F4F389", marginBottom: 0 }}>
+                  This nickname is already used
+                </p>
+              ) : (
+                ""
+              )}
+              <button
+                className="join-btn"
+                type="submit"
+                style={{ marginTop: "100px" }}
+              >
+                JOIN
+              </button>
+            </form>
           </div>
-          <div className="input-group">
-            <input
-              className="reg-input"
-              type="text"
-              name="mobileNumber"
-              placeholder="Mobile Number"
-              value={formData.mobileNumber}
-              onChange={handleInputChange}
-            />
-            {formErrors.mobileNumber && (
-              <div className="error-message">{formErrors.mobileNumber}</div>
-            )}
-          </div>
-          {usedNickname ? (
-            <p style={{ color: "#F4F389", marginBottom: 0 }}>
-              This nickname is already used
-            </p>
-          ) : (
-            ""
-          )}
-          <div className="join-bnt-container">
-            <button className="join-btn" type="submit" style={{}}>
-              JOIN
-            </button>
-          </div>
-        </form>
-      </div>
+        </>
+      )}
     </>
   );
-}
+};
 
 export default Registration;

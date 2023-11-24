@@ -41,11 +41,7 @@ const AskQuestion = () => {
         </div>
       </div>
       <AddQuestion />
-      <div className="menu-text">
-        <p className="paragraf-bottom" style={{ fontSize: "12px" }}>
-          Coffee & Life
-        </p>
-      </div>
+      <div className="coffe-life-txt">Coffee & Life</div>
     </>
   );
 };

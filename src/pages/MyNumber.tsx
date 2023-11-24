@@ -44,23 +44,16 @@ const MyNumber = () => {
           </svg>
         </div>
       </div>
-
       <NumberCard />
-      <p style={{ color: "#F4F389", marginBottom: 0, textAlign: "center" }}>
-        Найди еще 3 человека с такой же цыфрои
+      <p style={{ color: "#F4F389", textAlign: "center" }}>
+        Найди еще людей с такой же цыфрои
         <br />
-        Găsește încă 3 oameni cu aceeași cifră
-      </p>
-      <div className="join-bnt-container" style={{ paddingTop: "20px" }}>
-        <button
-          className="join-btn"
-          style={{ height: "60px", width: "209px" }}
-          onClick={() => navigate("/location")}
-        >
+        Găsește încă oameni cu aceeași cifră
+        <button className="talk-btn" onClick={() => navigate("/location")}>
           Поговорить с друзями
         </button>
-      </div>
-      <p className="paragraf-bottom">Coffee & Life</p>
+      </p>
+      <div className="coffe-life-txt">Coffee & Life</div>
     </>
   );
 };

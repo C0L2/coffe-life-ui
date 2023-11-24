@@ -1,8 +1,25 @@
+import { ReactNode } from "react";
+
 export interface FormData {
-    name: string;
-    surname: string;
     nickname: string;
     mobileNumber: string;
+}
+
+export interface AddQuestion {
+    question: string;
+    nickname: string | null;
+}
+
+export interface ExpandableContentProps {
+    initialHeight: number;
+    expandedHeight: number;
+}
+
+export interface Survey {
+    proVotes: number;
+    contraVotes: number;
+    proPercentage: number;
+    contraPercentage: number;
 }
 
 export interface AdminQuestions {
@@ -33,8 +50,6 @@ export interface SurveyResult {
 
 export interface User {
     id: number;
-    firstName: string;
-    lastName: string;
     nickname: string;
     phone: string | null;
     assignedNumber: number;
@@ -43,8 +58,30 @@ export interface User {
 
 export interface UserInfo {
     id: number;
-    firstName: string,
-    lastName: string,
+    nickname: string;
     assignedNumber: number
 }
 
+export interface Question {
+    id: number;
+    question: string;
+    nickname: string;
+}
+
+export interface LoadingOverlayProps {
+    isOpen: boolean;
+}
+
+export interface LoadingLayoutProps {
+    children: ReactNode;
+}
+
+export interface AppProviderProps {
+    children: React.ReactNode;
+}
+
+export interface Vote {
+    answer_text: string;
+    is_pro: boolean;
+    question: number;
+}

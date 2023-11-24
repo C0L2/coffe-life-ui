@@ -1,12 +1,8 @@
 import { useNavigate } from "react-router-dom";
-import { useEffect } from "react";
 
 const AdminWelcome = () => {
   const navigate = useNavigate();
 
-  useEffect(() => {
-    localStorage.setItem("nickname", "admin-sigma");
-  }, []);
   return (
     <>
       <div className="welcome-admin">
@@ -32,17 +28,15 @@ const AdminWelcome = () => {
           РАБ ХРИСТА
         </p>
 
-        <div className="join-bnt-container">
-          <button
-            className="join-btn"
-            style={{ height: "60px", width: "209px" }}
-            onClick={() => navigate("/admin-menu")}
-          >
-            ПОГНАЛИ ВОРКАТЬ
-          </button>
-        </div>
+        <button
+          className="join-btn"
+          style={{ width: "244px", marginBottom: "75px" }}
+          onClick={() => navigate("/admin-menu")}
+        >
+          ПОГНАЛИ ВОРКАТЬ
+        </button>
 
-        <p className="paragraf-bottom">Coffee & Life</p>
+        <div className="coffe-life-txt">Coffee & Life</div>
       </div>
     </>
   );

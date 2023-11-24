@@ -16,7 +16,7 @@ body {
 }
 
 .logo-container {
-  padding-top: 50px;
+  padding-top: 60px;
   display: flex;
   justify-content: center;
 }
@@ -36,20 +36,71 @@ body {
   line-height: normal;
 }
 
-.reg-input {
-  border: 0px solid;
-  width: 280px;
+.loading-div {
+  overflow-y: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+}
+
+.svg-container {
+  width: 50px;
   height: 50px;
-  border-radius: 30px;
-  background: #FFF;
-  margin-bottom: 10px;
-  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0;
+  padding: 0;
 }
 
-.reg-input::-webkit-input-placeholder {
-  font-size: 16px;
+.rotating-svg-container {
+  position: relative;
+  width: 50px;
+  height: 50px;
 }
 
+.svg-wrapper {
+  color: #fff;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 50px;
+  height: 50px;
+}
+
+.static-overlay {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 50px;
+  height: 50px;
+  z-index: 1;
+  /* Asigură că SVG-ul static este peste SVG-ul rotativ */
+}
+
+
+.rotating-svg {
+  animation: rotate 2s linear infinite;
+  z-index: 1;
+  /* Asigură că SVG-ul rotativ se află sub SVG-ul static */
+}
+
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+
+/* Registrations */
 .center-div {
   display: flex;
   justify-content: center;
@@ -61,29 +112,24 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding-top: 40px;
+  /* padding-top: 30px; */
+  margin: 0 auto;
 }
 
-.join-bnt-container {
-  display: flex;
-  padding: 10px 35px;
-  justify-content: center;
-  align-items: center;
-  gap: 10px;
-  outline: none;
-  border: none;
-  padding-top: 40px;
+.reg-input {
+  border: 0px solid;
+  padding: 10px;
+  max-width: 100%;
+  min-height: 50px;
+  min-width: 280px;
+  border-radius: 30px;
+  background: #FFF;
+  margin-bottom: 10px;
+  text-align: center;
 }
 
-.next-button-container {
-  display: flex;
-  padding: 10px 35px;
-  justify-content: center;
-  align-items: center;
-  gap: 10px;
-  outline: none;
-  border: none;
-  padding-top: 20px;
+.reg-input::-webkit-input-placeholder {
+  font-size: 16px;
 }
 
 .join-btn {
@@ -100,6 +146,87 @@ body {
   font-style: normal;
   font-weight: 700;
   line-height: normal;
+  position: absolute;
+  bottom: 40px;
+}
+
+.quizz-button {
+  outline: none;
+  border: none;
+  border-radius: 30px;
+  background: #F4F389;
+  width: 111px;
+  height: 40px;
+  color: #2F2F2F;
+  text-align: center;
+  font-family: Montserrat;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  position: absolute;
+}
+
+.quizz-button.disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.next-btn {
+  outline: none;
+  border: none;
+  border-radius: 30px;
+  background: #F4F389;
+  width: 111px;
+  height: 40px;
+  color: #2F2F2F;
+  text-align: center;
+  font-family: Montserrat;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  margin-top: 20px;
+}
+
+.talk-btn {
+  outline: none;
+  border: none;
+  border-radius: 30px;
+  background: #F4F389;
+  min-width: 209px;
+  height: 60px;
+  color: #2F2F2F;
+  text-align: center;
+  font-family: Montserrat;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  margin-top: 20px;
+}
+
+.textarea-style {
+  min-height: 50px;
+  background: transparent;
+  border: none;
+  font-size: 16px;
+  opacity: 0.75;
+  margin-top: 10px;
+  margin-left: 10px;
+  resize: none;
+  overflow: hidden;
+}
+
+.next-button-container {
+  display: flex;
+  padding: 10px 35px;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  outline: none;
+  border: none;
+  padding-top: 20px;
 }
 
 .join-btn.disabled {
@@ -111,6 +238,7 @@ body {
 .reg-input:focus {
   outline: none;
 }
+
 
 .hints {
   color: #000;
@@ -137,7 +265,10 @@ body {
   color: #FFF;
   display: flex;
   justify-content: center;
-  padding-top: 200px;
+  position: fixed;
+  bottom: 20px;
+  right: 35%;
+  left: 35%;
 }
 
 .paragraf-bottom {
@@ -225,18 +356,19 @@ body {
 }
 
 .meet-card {
-  min-height: 150px;
+  min-height: 280px;
   width: 98%;
   border-radius: 20px;
-  background: #DC7755;
+  background: #4DDEB0;
 }
 
 .meet-card .title {
-  font-size: 16px;
+  color: #2F2F2F;
+  font-family: Montserrat;
   font-style: normal;
-  font-weight: 500;
+  font-weight: 700;
   line-height: normal;
-  margin-top: 10px;
+  margin-top: 20px;
   margin-left: 20px;
 }
 
@@ -248,13 +380,28 @@ body {
   text-decoration-color: #F4F389;
 }
 
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+.fade-in {
+  animation: fadeIn 1s ease-in-out;
+}
+
 .meet-card .ru-ro-txt {
   font-size: 16px;
   font-style: normal;
   font-weight: 500;
   line-height: normal;
-  margin-top: 20px;
+  margin-top: 41px;
   margin-left: 20px;
+  color: #2F2F2F;
 }
 
 .meet-card .ro-txt {
@@ -269,6 +416,34 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
+  color: #FFF;
+}
+
+.meet-questions-card {
+  background-color: #DC7755;
+  height: 180px;
+  width: 98%;
+  border-radius: 20px;
+  margin-top: 40px;
+}
+
+.meet-questions-card .title {
+  color: #FFF;
+  font-family: Montserrat;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  margin-top: 20px;
+  margin-left: 20px;
+}
+
+.meet-questions-card .ru-ro-txt {
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  margin-top: 10px;
+  margin-left: 20px;
   color: #FFF;
 }
 

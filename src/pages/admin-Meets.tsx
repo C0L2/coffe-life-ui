@@ -1,17 +1,16 @@
 import { useNavigate } from "react-router-dom";
 import AboutUser from "../components/AboutUser";
-import { useState, useEffect } from "react";
-// import { getAllUsers } from "../api";
+import { useGetAllUsersQuery } from "../api";
+import { User } from "../types";
+import LoadingOverlay from "./Layouts/LoadingOverlay";
 
 const AdminMeets = () => {
   const navigate = useNavigate();
-  const [usersList, setUsersList] = useState<any>([]);
+  const { data, isLoading } = useGetAllUsersQuery();
 
-  useEffect(() => {
-    /*  getAllUsers().then((res) => {
-      setUsersList(res.data);
-    }); */
-  }, [usersList]);
+  if (isLoading || !data) {
+    return <LoadingOverlay />;
+  }
 
   return (
     <>
@@ -72,12 +71,11 @@ const AdminMeets = () => {
       </div>
       <hr />
 
-      {usersList.map((user: any) => (
+      {data?.map((user: User) => (
         <AboutUser
           key={user.id}
           id={user.id}
-          firstName={user.firstName}
-          lastName={user.lastName}
+          nickname={user.nickname}
           assignedNumber={user.assignedNumber}
         />
       ))}

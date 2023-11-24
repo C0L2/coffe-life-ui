@@ -17,7 +17,7 @@ const Welcome = () => {
         <br /> family
       </div>
       <div className="next-button-container">
-        <button className="join-btn" onClick={handleClick}>
+        <button className="next-btn" onClick={handleClick}>
           NEXT
         </button>
       </div>

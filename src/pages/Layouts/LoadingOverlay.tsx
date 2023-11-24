@@ -1,58 +1,12 @@
-import { useEffect, useState } from "react";
-import { useGetMyNumberMutation } from "../api";
-
-const NumberCard = () => {
-  const nickname = localStorage.getItem("nickname");
-  const [myNumber, setMyNumber] = useState<number>(0);
-  const [getMyNumber, { data, isLoading, isSuccess }] =
-    useGetMyNumberMutation();
-
-  useEffect(() => {
-    if (nickname) {
-      getMyNumber(nickname);
-    }
-  }, [nickname, getMyNumber]);
-
-  useEffect(() => {
-    if (isSuccess && !isLoading) {
-      setMyNumber(data?.assignedNumber || null);
-    }
-  }, [isSuccess, isLoading, data]);
-
+const LoadingOverlay = () => {
   return (
-    <div
-      className="menu-card-2"
-      style={{ background: `#DC7755`, marginBottom: "10px", display: "flex" }}
-    >
-      <div className="title-with-icon-2" style={{ flex: 1 }}>
-        <div className="numer-title">Your number</div>
-        <div className="numar-title-ru">Ваш номер</div>
-        <div className="numar-title-ro">Numărul tău</div>
-      </div>
-      <div
-        className="right-square"
-        style={{
-          flex: 1,
-          position: "relative",
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-        }}
-      >
-        {isLoading ? (
-          <>
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="100"
-              height="100"
-              viewBox="0 0 100 100"
-              fill="none"
-            >
-              <circle cx="50" cy="50" r="50" fill="white" />
-            </svg>
+    <>
+      <div className="loading-div">
+        <div className="svg-container">
+          <div className="rotating-svg-container">
             <div className="svg-wrapper static-overlay">
               <svg
-                style={{ marginTop: "11px", marginLeft: "12px" }}
+                style={{ marginTop: "11px", marginLeft: "17px" }}
                 xmlns="http://www.w3.org/2000/svg"
                 width="50"
                 height="50"
@@ -68,7 +22,7 @@ const NumberCard = () => {
             </div>
             <div className="svg-wrapper">
               <svg
-                style={{ marginLeft: "1px" }}
+                style={{ marginLeft: "5px" }}
                 xmlns="http://www.w3.org/2000/svg"
                 width="50"
                 height="50"
@@ -99,33 +53,13 @@ const NumberCard = () => {
                   </linearGradient>
                 </defs>
               </svg>
+              Loading...
             </div>
-          </>
-        ) : (
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="100"
-            height="100"
-            viewBox="0 0 100 100"
-            fill="none"
-          >
-            <circle cx="50" cy="50" r="50" fill="white" />
-            <text
-              style={{ fontWeight: "bold", fontSize: "36px" }}
-              x="50"
-              y="50"
-              textAnchor="middle"
-              alignmentBaseline="middle"
-              fontSize="36"
-              fill="black"
-            >
-              {myNumber !== null ? myNumber : "N/A"}
-            </text>
-          </svg>
-        )}
+          </div>
+        </div>
       </div>
-    </div>
+    </>
   );
 };
 
-export default NumberCard;
+export default LoadingOverlay;

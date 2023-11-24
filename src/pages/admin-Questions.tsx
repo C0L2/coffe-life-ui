@@ -1,23 +1,11 @@
 import { useNavigate } from "react-router-dom";
 import { AdminQuestion } from "../components/AdminQuestion";
-import { useEffect, useState } from "react";
-// import { getAllQuestions } from "../api";
-
-export interface Quesions {
-  id: number;
-  question: string;
-  nickname: string;
-}
+import { useGetAllQuestionsQuery } from "../api";
+import LoadingOverlay from "./Layouts/LoadingOverlay";
 
 const AdminQuestions = () => {
   const navigate = useNavigate();
-  const [qList, setQlist] = useState<Quesions[]>([]);
-
-  useEffect(() => {
-    /* getAllQuestions().then((res) => {
-      setQlist(res.data);
-    }); */
-  }, [qList]);
+  const { data, isLoading } = useGetAllQuestionsQuery();
 
   return (
     <>
@@ -57,14 +45,22 @@ const AdminQuestions = () => {
         </div>
       </div>
 
-      {qList.map((question) => (
-        <AdminQuestion
-          key={question.id}
-          id={question.id}
-          user={question.nickname}
-          question={question.question}
-        />
-      ))}
+      {isLoading && !data ? (
+        <LoadingOverlay />
+      ) : (
+        <>
+          {data?.map((question) => (
+            <AdminQuestion
+              key={question.id}
+              id={question.id}
+              user={question.nickname}
+              question={question.question}
+            />
+          ))}
+
+          <p className="paragraf-bottom">Coffee & Life</p>
+        </>
+      )}
 
       <p className="paragraf-bottom">Coffee & Life</p>
     </>
