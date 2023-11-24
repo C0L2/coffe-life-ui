@@ -2,6 +2,7 @@ import { useNavigate } from "react-router-dom";
 import NumberCard from "../components/NumberCard";
 
 const MyNumber = () => {
+  //check commit
   const navigate = useNavigate();
   return (
     <>
