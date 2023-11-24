@@ -10,6 +10,12 @@ export interface AddQuestion {
     nickname: string | null;
 }
 
+export interface ExpandableContentProps {
+    initialHeight: number;
+    expandedHeight: number;
+}
+
+
 export interface AdminQuestions {
     key: number;
     id: number;

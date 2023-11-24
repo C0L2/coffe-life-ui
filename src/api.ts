@@ -47,8 +47,16 @@ export const api = createApi({
         getSurveyResult: builder.query({
             query: () => 'survey/1',
         }),
-        getMyNumber: builder.query({
-            query: () => `users/find-by-nickanme?nickname=${localStorage.getItem('nickname')}`,
+        getMyNumber: builder.mutation({
+            query: (nickname: string) => ({
+                url: 'users/find-by-nickanme',
+                method: 'POST',
+                body: nickname,
+                baseQuery: {
+                    ...baseQuery,
+                    method: 'POST',
+                },
+            }),
         }),
         getAllQuestions: builder.query({
             query: () => 'questions/all',
@@ -70,7 +78,7 @@ export const {
     useAskQuestionsMutation,
     useVoteSurveyMutation,
     useGetSurveyResultQuery,
-    useGetMyNumberQuery,
+    useGetMyNumberMutation,
     useGetAllQuestionsQuery,
     useDeleteQuestionMutation,
 } = api;

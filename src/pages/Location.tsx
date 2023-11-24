@@ -47,7 +47,7 @@ const Location = () => {
       <div>
         <QuestionsCard />
       </div>
-      <p className="paragraf-bottom">Coffee & Life</p>
+      <div className="coffe-life-txt">Coffee & Life</div>
     </>
   );
 };
