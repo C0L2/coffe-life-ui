@@ -1,17 +1,27 @@
 // apiSlice.ts
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
+import { configureStore } from '@reduxjs/toolkit';
+import { FormData } from './types';
 
-const URL = 'https://easy-gray-elephant-tutu.cyclic.app/';
+const URL = 'http://localhost:9500/';
+
+const baseQuery = fetchBaseQuery({
+    baseUrl: URL,
+});
 
 export const api = createApi({
     reducerPath: 'api',
-    baseQuery: fetchBaseQuery({ baseUrl: URL }),
+    baseQuery,
     endpoints: (builder) => ({
         regNewUser: builder.mutation({
-            query: (data) => ({
+            query: (data: FormData) => ({
                 url: 'users/create-user',
                 method: 'POST',
                 body: data,
+                baseQuery: {
+                    ...baseQuery,
+                    method: 'POST',
+                },
             }),
         }),
         checkNickname: builder.query({
@@ -52,6 +62,7 @@ export const api = createApi({
     }),
 });
 
+
 export const {
     useRegNewUserMutation,
     useCheckNicknameQuery,
@@ -63,3 +74,11 @@ export const {
     useGetAllQuestionsQuery,
     useDeleteQuestionMutation,
 } = api;
+
+export const store = configureStore({
+    reducer: {
+        [api.reducerPath]: api.reducer,
+    },
+    middleware: (getDefaultMiddleware) =>
+        getDefaultMiddleware().concat(api.middleware),
+});

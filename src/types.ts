@@ -55,3 +55,7 @@ export interface LoadingOverlayProps {
 export interface LoadingLayoutProps {
     children: ReactNode;
 }
+
+export interface AppProviderProps {
+    children: React.ReactNode;
+}

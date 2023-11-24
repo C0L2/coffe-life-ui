@@ -1,72 +1,76 @@
 import { useState, ChangeEvent, FormEvent, useEffect, FC } from "react";
 import LogoComponent from "../components/LogoComponent";
-import { Form, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { FormData } from "../types";
 import useRedirectOnLogin from "../hooks/useRedirectOnLogin";
 import { useRegNewUserMutation } from "../api";
-import LoadingLayout from "./Layouts/LoadingOverlay";
 import LoadingOverlay from "./Layouts/LoadingOverlay";
+import { get } from "react-hook-form";
 
 const Registration: FC = () => {
   useRedirectOnLogin();
 
-  // const [regNewUser, { isLoading, error }] = useRegNewUserMutation();
+  const [regNewUser, { isLoading, isSuccess, error, isError }] =
+    useRegNewUserMutation();
+  const [loading, setLoading] = useState(false);
 
   const initialFormData: FormData = {
     nickname: "",
     mobileNumber: "",
   };
-  /* 
-  if (isLoading) {
-  } */
+
+  useEffect(() => {
+    if (isLoading) {
+      setLoading(true);
+    }
+  }, [isLoading]);
+
+  useEffect(() => {
+    if (isSuccess) {
+      setLoading(false);
+      localStorage.setItem("nickaname", formData.nickname);
+      navigate("/welcome");
+    }
+  }, [isSuccess]);
+
+  useEffect(() => {
+    if (isError) {
+      setLoading(false);
+      const error_msg = get(error, "data.message");
+      setUsedNickname(error_msg);
+    }
+  }, [isError]);
 
   const navigate = useNavigate();
   const [formData, setFormData] = useState<FormData>(initialFormData);
-  const [formErrors, setFormErrors] = useState<Partial<FormData>>({});
   const [usedNickname, setUsedNickname] = useState<boolean>(false);
+  const [nicknameError, setNicknameError] = useState<string | null>(null);
+
   const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
   };
 
-  const [clicked, setClicked] = useState(false);
-
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
-    setClicked(true);
-    // regNewUser().then;
-    /* 
-    navigate("/welcome");
     e.preventDefault();
- */
-    // Validare formular
-    /*  const errors: Partial<FormData> = {};
-
-    if (Object.keys(errors).length > 0) {
-      setFormErrors(errors);
+    if (formData.nickname === "sigma-admin-for-coffe-life") {
+      navigate("/admin-welcome");
     } else {
-      if (formData.nickname === "admin-sigma") navigate("admin-welcome");
-      else { */
-    /*  regNewUser(
-          formData.name,
-          formData.surname,
-          formData.nickname,
-          formData.mobileNumber
-        ).then((res) => {
-          if (res.data.message === "This nickname is already taken") {
-            setUsedNickname(true);
-          } else {
-            localStorage.setItem("nickname", formData.nickname);
-            if (formData.nickname === "admin-sigma") navigate("admin-welcome");
-            else navigate("/welcome");
-          }
-        }); */
-    /*  }
-    } */
+      if (formData.nickname.length < 4) {
+        setNicknameError("Nickname-ul trebuie să aibă cel puțin 4 caractere.");
+      } else {
+        setNicknameError(null);
+        regNewUser({
+          nickname: formData.nickname,
+          mobileNumber: formData.mobileNumber,
+        });
+      }
+    }
   };
 
   return (
     <>
-      {clicked ? (
+      {loading ? (
         <LoadingOverlay></LoadingOverlay>
       ) : (
         <>
@@ -88,25 +92,21 @@ const Registration: FC = () => {
                   type="text"
                   name="nickname"
                   placeholder="nickname"
+                  minLength={4}
                   value={formData.nickname}
                   onChange={handleInputChange}
                 />
-                {formErrors.nickname && (
-                  <div className="error-message">{formErrors.nickname}</div>
-                )}
               </div>
               <div>
                 <input
                   className="reg-input"
+                  required
                   type="text"
                   name="mobileNumber"
                   placeholder="mobile number"
                   value={formData.mobileNumber}
                   onChange={handleInputChange}
                 />
-                {formErrors.mobileNumber && (
-                  <div className="error-message">{formErrors.mobileNumber}</div>
-                )}
               </div>
               {usedNickname ? (
                 <p style={{ color: "#F4F389", marginBottom: 0 }}>
@@ -122,7 +122,6 @@ const Registration: FC = () => {
               >
                 JOIN
               </button>
-              {/* </div> */}
             </form>
           </div>
         </>

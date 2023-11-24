@@ -1,15 +1,15 @@
 import { useNavigate } from "react-router-dom";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 // import { getSurveyResult } from "../api";
 
 const AdminQuiz = () => {
   const navigate = useNavigate();
   const [results, setResults] = useState<string>("");
 
-  const [surveyResult, setSurveyResult] = useState<any>({});
+  // const [surveyResult, setSurveyResult] = useState<any>({});
 
-  useEffect(() => {
-    /* getSurveyResult().then((res) => {
+  // useEffect(() => {
+  /* getSurveyResult().then((res) => {
       setSurveyResult(res.data[0]);
       var suma = surveyResult!.contraVotes + surveyResult!.proVotes;
       setResults(
@@ -18,7 +18,7 @@ const AdminQuiz = () => {
         }%`
       );
     }); */
-  }, [surveyResult]);
+  // }, [surveyResult]);/*  */
 
   return (
     <>

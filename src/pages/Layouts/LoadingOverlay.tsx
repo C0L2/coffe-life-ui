@@ -48,8 +48,8 @@ const LoadingOverlay = () => {
                     y2="50"
                     gradientUnits="userSpaceOnUse"
                   >
-                    <stop stop-color="#4DDEB0" />
-                    <stop offset="1" stop-color="#5792EB" />
+                    <stop stopColor="#4DDEB0" />
+                    <stop offset="1" stopColor="#5792EB" />
                   </linearGradient>
                 </defs>
               </svg>
