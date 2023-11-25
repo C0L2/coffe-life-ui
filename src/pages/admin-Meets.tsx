@@ -3,19 +3,14 @@ import AboutUser from "../components/AboutUser";
 import { useGetAllUsersQuery } from "../api";
 import { User } from "../types";
 import LoadingOverlay from "./Layouts/LoadingOverlay";
-import { useEffect } from "react";
 
 const AdminMeets = () => {
   const navigate = useNavigate();
-  const { data, isLoading, refetch } = useGetAllUsersQuery();
+  const { data, isLoading } = useGetAllUsersQuery();
 
   if (isLoading || !data) {
     return <LoadingOverlay />;
   }
-
-  useEffect(() => {
-    refetch();
-  }, []);
 
   return (
     <>
