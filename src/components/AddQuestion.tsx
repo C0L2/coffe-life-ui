@@ -44,7 +44,7 @@ const AddQuestion = () => {
     }
   }, [isSuccess]);
 
-  if (isLoading || !isSuccess) {
+  if (isLoading) {
     return <LoadingOverlay />;
   }
 
