@@ -398,8 +398,6 @@ const QuizResponse = () => {
             </svg>
           </div>
         </div>
-      </div>
-      <div className="join-bnt-container" style={{ paddingTop: "20px" }}>
         <button
           className="join-btn"
           style={{ height: "60px", width: "209px" }}
