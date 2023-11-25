@@ -8,7 +8,7 @@ const NumberCard = () => {
 
   useEffect(() => {
     if (nickname) {
-      getMyNumber(nickname);
+      getMyNumber({ nickname });
     }
   }, [nickname, getMyNumber]);
 

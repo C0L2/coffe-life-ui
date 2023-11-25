@@ -1,5 +1,9 @@
 import { ReactNode } from "react";
 
+export interface GetUsersInfoByNick {
+    nickname: string;
+}
+
 export interface FormData {
     nickname: string;
     mobileNumber: string;

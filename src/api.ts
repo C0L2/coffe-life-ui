@@ -1,7 +1,7 @@
 // apiSlice.ts
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 import { configureStore } from '@reduxjs/toolkit';
-import { AddQuestion, FormData, Question, Survey, User } from './types';
+import { AddQuestion, FormData, GetUsersInfoByNick, Question, Survey, User } from './types';
 
 const URL = "https://ill-lime-pike-cap.cyclic.app/";
 
@@ -54,7 +54,7 @@ export const api = createApi({
             providesTags: ['SURVEY_RESULT'],
         }),
         getMyNumber: builder.mutation({
-            query: (nickname: string) => ({
+            query: (nickname: GetUsersInfoByNick) => ({
                 url: 'users/find-by-nickanme',
                 method: 'POST',
                 body: nickname,
