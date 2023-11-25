@@ -1,8 +1,9 @@
 import { useEffect, useState } from "react";
 import { ToastContainer, toast } from "react-toastify";
 import { useAskQuestionsMutation } from "../api";
-import "react-toastify/dist/ReactToastify.css";
 import LoadingOverlay from "../pages/Layouts/LoadingOverlay";
+
+import "react-toastify/dist/ReactToastify.css";
 
 const AddQuestion = () => {
   const [text, setText] = useState("Ask a question");
