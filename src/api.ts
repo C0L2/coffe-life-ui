@@ -3,7 +3,7 @@ import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 import { configureStore } from '@reduxjs/toolkit';
 import { AddQuestion, FormData, Question, Survey, User } from './types';
 
-const URL = "https://vivacious-shirt-newt.cyclic.app/";
+const URL = "https://ill-lime-pike-cap.cyclic.app/";
 
 const baseQuery = fetchBaseQuery({
     baseUrl: URL,
