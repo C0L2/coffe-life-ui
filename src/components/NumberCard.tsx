@@ -4,8 +4,7 @@ import { useGetMyNumberMutation } from "../api";
 const NumberCard = () => {
   const nickname = localStorage.getItem("nickname");
   const [myNumber, setMyNumber] = useState<number>(0);
-  const [getMyNumber, { data, isLoading, isSuccess }] =
-    useGetMyNumberMutation();
+  const [getMyNumber, { data, isLoading }] = useGetMyNumberMutation();
 
   useEffect(() => {
     if (nickname) {
@@ -14,10 +13,10 @@ const NumberCard = () => {
   }, [nickname, getMyNumber]);
 
   useEffect(() => {
-    if (isSuccess && !isLoading) {
+    if (data) {
       setMyNumber(data.assignedNumber);
     }
-  }, [isSuccess, isLoading, data]);
+  }, [data]);
 
   return (
     <div
