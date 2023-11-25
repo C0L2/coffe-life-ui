@@ -15,7 +15,7 @@ const NumberCard = () => {
 
   useEffect(() => {
     if (isSuccess && !isLoading) {
-      setMyNumber(data?.assignedNumber || null);
+      setMyNumber(data.assignedNumber);
     }
   }, [isSuccess, isLoading, data]);
 
@@ -119,7 +119,7 @@ const NumberCard = () => {
               fontSize="36"
               fill="black"
             >
-              {myNumber !== null ? myNumber : "N/A"}
+              {myNumber}
             </text>
           </svg>
         )}
