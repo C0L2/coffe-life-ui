@@ -15,7 +15,7 @@ const NumberCard = () => {
 
   useEffect(() => {
     if (isSuccess && !isLoading) {
-      setMyNumber(data?.assignedNumber || null);
+      setMyNumber(data.assignedNumber);
     }
   }, [isSuccess, isLoading, data]);
 
