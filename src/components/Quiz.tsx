@@ -2,11 +2,12 @@ import { useNavigate } from "react-router-dom";
 // import { voteSurvey } from "../api";
 import { useState, useEffect } from "react";
 import { useVoteSurveyMutation } from "../api";
+import LoadingOverlay from "../pages/Layouts/LoadingOverlay";
 
 const Quiz = () => {
   const navigate = useNavigate();
   const [voted, setVoted] = useState(!!localStorage.getItem("voted"));
-  const [voteSurvey, { isSuccess }] = useVoteSurveyMutation();
+  const [voteSurvey, { isSuccess, isLoading }] = useVoteSurveyMutation();
 
   useEffect(() => {
     if (isSuccess) {
@@ -34,6 +35,10 @@ const Quiz = () => {
     localStorage.setItem("voted", "no");
     setVoted(true);
     voteSurvey({ is_pro, question: 1 });
+  }
+
+  if (isLoading) {
+    return <LoadingOverlay />;
   }
 
   return (
