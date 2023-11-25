@@ -1,13 +1,14 @@
 import { useEffect, useState } from "react";
 import { ToastContainer, toast } from "react-toastify";
 import { useAskQuestionsMutation } from "../api";
+import LoadingOverlay from "../pages/Layouts/LoadingOverlay";
 
 import "react-toastify/dist/ReactToastify.css";
 
 const AddQuestion = () => {
   const [text, setText] = useState("Ask a question");
   const [cardHeight, setCardHeight] = useState("auto");
-  const [askQuestions, { isSuccess }] = useAskQuestionsMutation();
+  const [askQuestions, { isSuccess, isLoading }] = useAskQuestionsMutation();
 
   const handleTextChange = (event: any) => {
     setText(event.target.value);
@@ -43,6 +44,10 @@ const AddQuestion = () => {
       });
     }
   }, [isSuccess]);
+
+  if (isLoading) {
+    return <LoadingOverlay />;
+  }
 
   return (
     <>
