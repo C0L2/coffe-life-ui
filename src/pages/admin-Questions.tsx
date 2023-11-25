@@ -2,10 +2,15 @@ import { useNavigate } from "react-router-dom";
 import { AdminQuestion } from "../components/AdminQuestion";
 import { useGetAllQuestionsQuery } from "../api";
 import LoadingOverlay from "./Layouts/LoadingOverlay";
+import { useEffect } from "react";
 
 const AdminQuestions = () => {
   const navigate = useNavigate();
-  const { data, isLoading } = useGetAllQuestionsQuery();
+  const { data, isLoading, refetch } = useGetAllQuestionsQuery();
+
+  useEffect(() => {
+    refetch();
+  }, [data]);
 
   return (
     <>

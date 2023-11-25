@@ -10,8 +10,6 @@ const AdminQuiz = () => {
 
   useEffect(() => {
     if (data) {
-      console.log("fine");
-      // setSurveyResult();
       var suma = data[0]?.contraVotes + data[0]?.proVotes;
       setResults(
         `Votes:  ${suma}  | Yes: ${data[0].proPercentage}% |  No ${data[0].contraPercentage}%`
