@@ -4,7 +4,7 @@ import { useGetSurveyResultQuery } from "../api";
 import LoadingOverlay from "./Layouts/LoadingOverlay";
 
 const AdminQuiz = () => {
-  const { data, isLoading } = useGetSurveyResultQuery();
+  const { data, isLoading, refetch } = useGetSurveyResultQuery();
   const [results, setResults] = useState<string>("");
   const navigate = useNavigate();
 
@@ -20,6 +20,10 @@ const AdminQuiz = () => {
   if (isLoading || !data) {
     return <LoadingOverlay />;
   }
+
+  useEffect(() => {
+    refetch();
+  }, []);
 
   return (
     <>

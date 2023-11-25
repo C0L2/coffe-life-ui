@@ -10,7 +10,7 @@ const AdminQuestions = () => {
 
   useEffect(() => {
     refetch();
-  }, [data]);
+  }, []);
 
   return (
     <>

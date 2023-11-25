@@ -15,7 +15,7 @@ const AdminMeets = () => {
 
   useEffect(() => {
     refetch();
-  }, [data]);
+  }, []);
 
   return (
     <>
