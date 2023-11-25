@@ -17,8 +17,6 @@ const AdminMeets = () => {
     refetch();
   }, [data]);
 
-  useEffect(() => {}, [data]);
-
   return (
     <>
       <div className="q-header">
