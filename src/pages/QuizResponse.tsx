@@ -1,10 +1,9 @@
-import { useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom"
 
 const QuizResponse = () => {
-  const navigate = useNavigate();
+  const navigate = useNavigate()
   return (
     <>
-      {" "}
       <div className="q-header">
         <div className="left-element" onClick={() => navigate("/menu")}>
           <svg
@@ -397,17 +396,17 @@ const QuizResponse = () => {
               />
             </svg>
           </div>
+          <button
+            className="join-btn"
+            style={{ height: "60px", width: "209px" }}
+            onClick={() => navigate("/menu")}
+          >
+            HOME PAGE
+          </button>
         </div>
-        <button
-          className="join-btn"
-          style={{ height: "60px", width: "209px" }}
-          onClick={() => navigate("/menu")}
-        >
-          HOME PAGE
-        </button>
       </div>
     </>
-  );
-};
+  )
+}
 
-export default QuizResponse;
+export default QuizResponse

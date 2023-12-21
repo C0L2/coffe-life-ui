@@ -1,4 +1,4 @@
-import MenuCard from "../components/MenuCard";
+import MenuCard from "../components/MenuCard"
 
 const Menu = () => {
   return (
@@ -26,10 +26,17 @@ const Menu = () => {
           link="take-a-quiz"
           color="#4DDEB0"
         />
+        <MenuCard
+          title="Coffee & Life vision"
+          title_ru="Познакомься с нами"
+          title_ro="Cunoaște-ne"
+          link="vision"
+          color="#7C83A8"
+        />
       </div>
       <p className="paragraf-bottom-special">Coffee & Life</p>
     </>
-  );
-};
+  )
+}
 
-export default Menu;
+export default Menu

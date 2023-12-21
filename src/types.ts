@@ -89,3 +89,12 @@ export interface Vote {
     is_pro: boolean;
     question: number;
 }
+
+export interface VisionCardProp {
+    color: string;
+    title: string;
+    text: string;
+    number: number;
+    className?: string
+    textColor?: string;
+}
