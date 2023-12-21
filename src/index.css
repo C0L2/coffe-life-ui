@@ -718,3 +718,23 @@ body {
   text-align: center;
   font-weight: 700;
 }
+
+.question-admin-button-container {
+  display: flex;
+  justify-content: space-between;
+  margin: 5px;
+}
+
+.button-style {
+  flex: 1;
+  max-width: 100%;
+  margin: 5px;
+  padding: 10px;
+  font-size: 14px;
+  background-color: #DC7755;
+  color: #ffffff;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}

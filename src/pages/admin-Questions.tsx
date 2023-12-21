@@ -1,16 +1,16 @@
-import { useNavigate } from "react-router-dom";
-import { AdminQuestion } from "../components/AdminQuestion";
-import { useGetAllQuestionsQuery } from "../api";
-import LoadingOverlay from "./Layouts/LoadingOverlay";
-import { useEffect } from "react";
+import { useNavigate } from "react-router-dom"
+import { AdminQuestion } from "../components/AdminQuestion"
+import { useGetAllQuestionsQuery } from "../api"
+import LoadingOverlay from "./Layouts/LoadingOverlay"
+import { useEffect } from "react"
 
 const AdminQuestions = () => {
-  const navigate = useNavigate();
-  const { data, isLoading, refetch } = useGetAllQuestionsQuery();
+  const navigate = useNavigate()
+  const { data, isLoading, isFetching, refetch } = useGetAllQuestionsQuery()
 
   useEffect(() => {
-    refetch();
-  }, []);
+    refetch()
+  }, [])
 
   return (
     <>
@@ -50,7 +50,13 @@ const AdminQuestions = () => {
         </div>
       </div>
 
-      {isLoading && !data ? (
+      <div className="question-admin-button-container">
+        <button className="button-style" onClick={refetch}>
+          Обновить список
+        </button>
+      </div>
+
+      {(isLoading && !data) || isFetching ? (
         <LoadingOverlay />
       ) : (
         <>
@@ -69,7 +75,7 @@ const AdminQuestions = () => {
 
       <p className="paragraf-bottom">Coffee & Life</p>
     </>
-  );
-};
+  )
+}
 
-export default AdminQuestions;
+export default AdminQuestions
