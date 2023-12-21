@@ -1,66 +1,66 @@
-import { useState, ChangeEvent, FormEvent, useEffect, FC } from "react";
-import LogoComponent from "../components/LogoComponent";
-import { useNavigate } from "react-router-dom";
-import { FormData } from "../types";
-import useRedirectOnLogin from "../hooks/useRedirectOnLogin";
-import { useRegNewUserMutation } from "../api";
-import LoadingOverlay from "./Layouts/LoadingOverlay";
-import { get } from "react-hook-form";
+import { useState, ChangeEvent, FormEvent, useEffect, FC } from "react"
+import LogoComponent from "../components/LogoComponent"
+import { useNavigate } from "react-router-dom"
+import { FormData } from "../types"
+import useRedirectOnLogin from "../hooks/useRedirectOnLogin"
+import { useRegNewUserMutation } from "../api"
+import LoadingOverlay from "./Layouts/LoadingOverlay"
+import { get } from "react-hook-form"
 
 const Registration: FC = () => {
-  useRedirectOnLogin();
+  useRedirectOnLogin()
 
   const [regNewUser, { isLoading, isSuccess, error, isError }] =
-    useRegNewUserMutation();
-  const [loading, setLoading] = useState(false);
+    useRegNewUserMutation()
+  const [loading, setLoading] = useState(false)
 
   const initialFormData: FormData = {
     nickname: "",
-    mobileNumber: "",
-  };
+    phone: "",
+  }
 
   useEffect(() => {
     if (isLoading) {
-      setLoading(true);
+      setLoading(true)
     }
-  }, [isLoading]);
+  }, [isLoading])
 
   useEffect(() => {
     if (isSuccess) {
-      setLoading(false);
-      localStorage.setItem("nickname", formData.nickname);
-      navigate("/welcome");
+      setLoading(false)
+      localStorage.setItem("nickname", formData.nickname)
+      navigate("/welcome")
     }
-  }, [isSuccess]);
+  }, [isSuccess])
 
   useEffect(() => {
     if (isError) {
-      setLoading(false);
-      const error_msg = get(error, "data.message");
-      setUsedNickname(error_msg);
+      setLoading(false)
+      const error_msg = get(error, "data.message")
+      setUsedNickname(error_msg)
     }
-  }, [isError]);
+  }, [isError])
 
-  const navigate = useNavigate();
-  const [formData, setFormData] = useState<FormData>(initialFormData);
-  const [usedNickname, setUsedNickname] = useState<boolean>(false);
+  const navigate = useNavigate()
+  const [formData, setFormData] = useState<FormData>(initialFormData)
+  const [usedNickname, setUsedNickname] = useState<boolean>(false)
 
   const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
-    const { name, value } = e.target;
-    setFormData({ ...formData, [name]: value });
-  };
+    const { name, value } = e.target
+    setFormData({ ...formData, [name]: value })
+  }
 
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
+    e.preventDefault()
     if (formData.nickname === "sigma-admin-for-coffe-life") {
-      navigate("/admin-welcome");
+      navigate("/admin-welcome")
     } else {
       regNewUser({
         nickname: formData.nickname,
-        mobileNumber: formData.mobileNumber,
-      });
+        phone: formData.phone,
+      })
     }
-  };
+  }
 
   return (
     <>
@@ -96,9 +96,9 @@ const Registration: FC = () => {
                   className="reg-input"
                   required
                   type="text"
-                  name="mobileNumber"
+                  name="phone"
                   placeholder="mobile number"
-                  value={formData.mobileNumber}
+                  value={formData.phone}
                   onChange={handleInputChange}
                 />
               </div>
@@ -121,7 +121,7 @@ const Registration: FC = () => {
         </>
       )}
     </>
-  );
-};
+  )
+}
 
-export default Registration;
+export default Registration

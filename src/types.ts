@@ -6,7 +6,7 @@ export interface GetUsersInfoByNick {
 
 export interface FormData {
     nickname: string;
-    mobileNumber: string;
+    phone: string;
 }
 
 export interface AddQuestion {
