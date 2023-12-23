@@ -1,44 +1,44 @@
-import { useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom"
 // import { voteSurvey } from "../api";
-import { useState, useEffect } from "react";
-import { useVoteSurveyMutation } from "../api";
-import LoadingOverlay from "../pages/Layouts/LoadingOverlay";
+import { useState, useEffect } from "react"
+import { useVoteSurveyMutation } from "../api"
+import LoadingOverlay from "../pages/Layouts/LoadingOverlay"
 
 const Quiz = () => {
-  const navigate = useNavigate();
-  const [voted, setVoted] = useState(!!localStorage.getItem("voted"));
-  const [voteSurvey, { isSuccess, isLoading }] = useVoteSurveyMutation();
+  const navigate = useNavigate()
+  const [voted, setVoted] = useState(!!localStorage.getItem("voted"))
+  const [voteSurvey, { isSuccess, isLoading }] = useVoteSurveyMutation()
 
   useEffect(() => {
     if (isSuccess) {
-      navigate("/qz-response");
+      navigate("/qz-response")
     }
-  }, [isSuccess]);
+  }, [isSuccess])
 
   useEffect(() => {
     if (localStorage.getItem("voted")) {
-      setVoted(true);
+      setVoted(true)
     }
-  }, []);
+  }, [])
 
   function voteYes(event: any) {
-    event.preventDefault();
-    const is_pro: boolean = true;
-    localStorage.setItem("voted", "yes");
-    setVoted(true);
-    voteSurvey({ is_pro, question: 1 });
+    event.preventDefault()
+    const is_pro: boolean = true
+    localStorage.setItem("voted", "yes")
+    setVoted(true)
+    voteSurvey({ is_pro, question: 1 })
   }
 
   function voteNo(event: any) {
-    event.preventDefault();
-    const is_pro: boolean = false;
-    localStorage.setItem("voted", "no");
-    setVoted(true);
-    voteSurvey({ is_pro, question: 1 });
+    event.preventDefault()
+    const is_pro: boolean = false
+    localStorage.setItem("voted", "no")
+    setVoted(true)
+    voteSurvey({ is_pro, question: 1 })
   }
 
   if (isLoading) {
-    return <LoadingOverlay />;
+    return <LoadingOverlay />
   }
 
   return (
@@ -61,7 +61,8 @@ const Quiz = () => {
         <p
           style={{ marginLeft: "20px", marginTop: "45px", marginRight: "10px" }}
         >
-          Может ли плач быть полезным в твоей жизни?
+          Десять рогов на семи головах большого красного дракона из книги
+          откровения это цари?
         </p>
 
         <div style={{ paddingTop: "5px", height: "60px" }}>
@@ -84,7 +85,7 @@ const Quiz = () => {
         </div>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default Quiz;
+export default Quiz
