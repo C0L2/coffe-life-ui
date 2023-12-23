@@ -2,8 +2,8 @@ import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 import { configureStore } from '@reduxjs/toolkit';
 import { AddQuestion, FormData, GetUsersInfoByNick, Question, Survey, User } from './types';
 
-// const URL = "https://ill-lime-pike-cap.cyclic.app/";
-const URL = "http://localhost:3000";
+const URL = "https://ill-lime-pike-cap.cyclic.app/";
+// const URL = "http://localhost:3000";
 
 const baseQuery = fetchBaseQuery({
     baseUrl: URL,
