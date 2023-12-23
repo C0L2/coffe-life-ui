@@ -395,14 +395,14 @@ const QuizResponse = () => {
                 fill="white"
               />
             </svg>
+            <button
+              className="join-btn"
+              style={{ height: "60px", width: "209px" }}
+              onClick={() => navigate("/menu")}
+            >
+              HOME PAGE
+            </button>
           </div>
-          <button
-            className="join-btn"
-            style={{ height: "60px", width: "209px" }}
-            onClick={() => navigate("/menu")}
-          >
-            HOME PAGE
-          </button>
         </div>
       </div>
     </>
