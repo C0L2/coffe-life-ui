@@ -19,13 +19,13 @@ const Menu = () => {
           link="meet-a-friend"
           color="#DC7755"
         />
-        <MenuCard
+        {/* <MenuCard
           title="Quiz"
           title_ru="Пройти опрос"
           title_ro="Treceți sondajul"
           link="take-a-quiz"
           color="#4DDEB0"
-        />
+        /> */}
         <MenuCard
           title="Coffee & Life vision"
           title_ru="Познакомься с нами"
